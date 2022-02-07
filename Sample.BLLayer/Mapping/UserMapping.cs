@@ -25,7 +25,7 @@ namespace Sample.BLLayer.Mapping
                                        UserDTO entityDTO,
                                        bool isNewEntity)
         {
-            
+            entityDTO.Email = entityDTO.UserName;
         }
 
     }

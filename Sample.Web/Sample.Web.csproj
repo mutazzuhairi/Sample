@@ -4,6 +4,7 @@
     <TargetFramework>net5.0</TargetFramework>
     <AssemblyName>Sample.Web</AssemblyName>
     <RootNamespace>Sample.Web</RootNamespace>
+    <UserSecretsId>bad831e6-c7c6-4b33-abde-85b32b22795f</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>

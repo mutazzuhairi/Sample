@@ -45,7 +45,7 @@ namespace Sample.BLLayer.BLUtilities.Abstractions
 
         public virtual async Task<List<TEntityDTO>> GetAllAsync(string route)
         {
-            var pocoList = await this._entityRepositry.Value.GetAll().Where(s => !s.Void).ToListAsync();
+            var pocoList = await this._entityRepositry.Value.AsQueryable().Where(s => !s.Void).ToListAsync();
             List <TEntityDTO> result = _mapper.Map<List<TEntityDTO>>(pocoList);
 
             return result;
@@ -54,7 +54,7 @@ namespace Sample.BLLayer.BLUtilities.Abstractions
 
         public virtual async Task<List<TEntityView>> GetAllViewAsync(string route)
         {
-            var pocoList = await this._entityRepositry.Value.GetAll().Where(s => !s.Void).ToListAsync();
+            var pocoList = await this._entityRepositry.Value.AsQueryable().Where(s => !s.Void).ToListAsync();
             List<TEntityView> result = _mapper.Map<List<TEntityView>>(pocoList);
 
             return result;
@@ -64,7 +64,7 @@ namespace Sample.BLLayer.BLUtilities.Abstractions
         public virtual async Task<TEntityDTO> GetSingleAsync(string route, params object[] keyValues)
         {
             TKey key = (TKey)keyValues.FirstOrDefault();
-            var poco = this._entityRepositry.Value.GetAll().Where(s => !s.Void && s.Id.Equals(key));
+            var poco = this._entityRepositry.Value.AsQueryable().Where(s => !s.Void && s.Id.Equals(key));
             poco = GetSingleEntityWithCustomIncludes(poco);
             var entity = await poco.FirstOrDefaultAsync();
             TEntityDTO result = default;
@@ -84,7 +84,7 @@ namespace Sample.BLLayer.BLUtilities.Abstractions
         public virtual async Task<TEntityView> GetSingleViewAsync(string route, params object[] keyValues)
         {
             TKey key = (TKey)keyValues.FirstOrDefault();
-            var poco = this._entityRepositry.Value.GetAll().Where(s => !s.Void && s.Id.Equals(key));
+            var poco = this._entityRepositry.Value.AsQueryable().Where(s => !s.Void && s.Id.Equals(key));
             poco = GetSingleEntityWithCustomIncludes(poco);
             var entity = await poco.FirstOrDefaultAsync();
             TEntityView result = default;
@@ -126,7 +126,7 @@ namespace Sample.BLLayer.BLUtilities.Abstractions
         public async Task<PaginationData> GetPaginationData(PaginationFilter filter, string route , IQueryable<TEntity> entities = null)
         {
             var validFilter = new PaginationFilter(filter, filter.PageNumber, filter.PageSize);
-            var totalRecords = entities != null ? await entities.CountAsync() : await this._entityRepositry.Value.GetAll().Where(s => !s.Void).CountAsync();
+            var totalRecords = entities != null ? await entities.CountAsync() : await this._entityRepositry.Value.AsQueryable().Where(s => !s.Void).CountAsync();
             if (validFilter.GetAll)
             {
                 validFilter.PageNumber = 1;
@@ -144,7 +144,7 @@ namespace Sample.BLLayer.BLUtilities.Abstractions
         }
         public virtual async Task<List<TEntity>> GetPaginationRecoreds(PaginationFilter validFilter)
         {
-            var data = this._entityRepositry.Value.GetAll().Where(s => !s.Void);
+            var data = this._entityRepositry.Value.AsQueryable().Where(s => !s.Void);
             if (!string.IsNullOrEmpty(validFilter.SearchField))
             {
                 data = data.Where(s => s.SearchField.Contains(validFilter.SearchField));

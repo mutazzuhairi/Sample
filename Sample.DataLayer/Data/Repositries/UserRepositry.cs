@@ -25,12 +25,12 @@ namespace Sample.DataLayer.Data.Repositries
             _systemServiceProvider = systemServiceProvider;
         }
 
-        public override IQueryable<User> GetAll()
+        public override IQueryable<User> AsQueryable()
         {
             return _userManager.Users;
         }
 
-        public override async void Add(User entity)
+        public override async void AddAsync(User entity)
         {
           await _userManager.CreateAsync(entity);
         }
@@ -90,7 +90,7 @@ namespace Sample.DataLayer.Data.Repositries
             return await _userManager.CheckPasswordAsync(user , password);
         }
 
-        public override  Task<int> SubmitChanges()
+        public override  Task<int> SaveChangesAsync()
         {
             return Task.FromResult<int>(0);
         }

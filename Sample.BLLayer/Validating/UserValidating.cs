@@ -25,9 +25,9 @@ namespace Sample.BLLayer.Validating
         }
         public void Validate(UserDTO entityDTO, bool isNewEntity)
         {
-            if (!IsEmailValid(entityDTO.Email))
+            if (!IsEmailValid(entityDTO.UserName))
             {
-                _serviceBuildException.Value.BuildException("Email", BLLayerConstatnts.ValidationMessage.EMAIL_NOT_VALID);
+                _serviceBuildException.Value.BuildException("UserName", BLLayerConstatnts.ValidationMessage.EMAIL_NOT_VALID);
             }
             else if (IsUserNameAlreadyExist(entityDTO.UserName,   entityDTO.Id))
             {

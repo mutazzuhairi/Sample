@@ -12,9 +12,7 @@ namespace Sample.BLLayer.Extends.ExtendModels
         [StringLength(100)]
         public string LastName { get; set; }
         [Required]
-        [StringLength(100)]
-        public string Email { get; set; }
-        [Required]
+        [EmailAddress]
         [StringLength(200)]
         public string UserName { get; set; }
         [Required]

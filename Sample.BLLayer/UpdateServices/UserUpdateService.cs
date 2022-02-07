@@ -82,10 +82,10 @@ namespace Sample.BLLayer.UpdateServices
             bool  isNewEntity = false;
             _entityValidating.Value.Validate(entityDTO, isNewEntity);
             User entityPoco = await _entityRepositry.Value.FindAsync(entityDTO.Id);
-            _entityMapping.Value.MapEntity(entityPoco, entityDTO, isNewEntity);
+            entityPoco = _entityMapping.Value.MapEntity(entityPoco, entityDTO, isNewEntity);
             await _entityRepositry.Value.UpdateAsync(entityPoco);
 
-            return entityDTO;
+            return this._mapper.Map<UserDTO>(entityPoco);
         }
 
         public async Task<UserDTO> CustomCreateAsync(UserDTO entityDTO, string password)
@@ -93,10 +93,10 @@ namespace Sample.BLLayer.UpdateServices
             bool isNewEntity = true;
             User entityPoco = new User();
             _entityValidating.Value.Validate(entityDTO, isNewEntity);
-            _entityMapping.Value.MapEntity(entityPoco, entityDTO, isNewEntity);
+            entityPoco = _entityMapping.Value.MapEntity(entityPoco, entityDTO, isNewEntity);
             await _entityRepositry.Value.CreateAsync(entityPoco, password);
 
-            return entityDTO;
+            return this._mapper.Map<UserDTO>(entityPoco);
         }
  
     }

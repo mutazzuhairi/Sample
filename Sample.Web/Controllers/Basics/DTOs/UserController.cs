@@ -34,14 +34,6 @@ namespace Sample.Web.Controllers.Basics.DTOs
             _systemServiceProvider = systemServiceProvider;
             _apiExceptionBuilder = apiExceptionBuilder;
         }
-
-
-        //[HttpPut]
-        //public override async Task<ActionResult<UserDTO>> Put(UserDTO userDTO)
-        //{
-        //    await _entityUpdateService.Value.CustomUpdateAsync(userDTO);
-        //    return Ok(new Response<UserDTO>(userDTO));
-        //}
- 
+         
     }
 }

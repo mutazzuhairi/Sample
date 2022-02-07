@@ -57,7 +57,7 @@ namespace Sample.BLLayer.QueryServices
 
         public bool IsUserNameAlreadyExist(string userName, long id)
         {
-            return _entityRepositry.Value.GetAll().Where(s => s.UserName == userName && s.Id != id).Any();
+            return _entityRepositry.Value.AsQueryable().Where(s => s.UserName == userName && s.Id != id).Any();
         }
 
         public async Task<bool> CheckPasswordAsync(User user, string password)

@@ -23,16 +23,21 @@ namespace Sample.BLLayer.BLUtilities.Abstractions
                                       TEntityDTO entityDto,
                                       bool isNewEntity)
         {
-            var loggedUserName = _systemServiceProvider.Value.GetCurrentUserId();
-
+            var loggedUserId = _systemServiceProvider.Value.GetCurrentUserId();
+            entityDto.CreatedBy = entity.CreatedBy;
+            entityDto.CreatedDate = entity.CreatedDate;
+            var version = entity.Version;
             if (isNewEntity)
             {
                 entityDto.CreatedDate = DateTimeOffset.UtcNow;
-                entityDto.CreatedBy = loggedUserName.ToString();
+                entityDto.CreatedBy = loggedUserId?.ToString() ?? "System";
             }
             entityDto.UpdatedDate = DateTimeOffset.UtcNow;
-            entityDto.UpdatedBy = loggedUserName.ToString();
+            entityDto.UpdatedBy = loggedUserId?.ToString() ?? "System";
+            entityDto.Id = entity.Id;
+            entityDto.SearchField = entity.SearchField;
             entity = _mapper.Map<TEntity>(entityDto);
+            entity.Version = version;
             return entity;
         }
 

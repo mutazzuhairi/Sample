@@ -28,7 +28,6 @@ namespace Sample.Web.WebUtilities.Extensions
                     ValidateIssuerSigningKey = true,
                     ValidIssuer = configuration["JwtSettings:Issuer"],
                     ValidAudience = configuration["JwtSettings:Issuer"],
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JwtSettings:Key"])),
                     ClockSkew = TimeSpan.FromSeconds(30)
                 };
             });

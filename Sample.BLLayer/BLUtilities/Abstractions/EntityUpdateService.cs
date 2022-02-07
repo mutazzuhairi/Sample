@@ -55,8 +55,8 @@ namespace Sample.BLLayer.BLUtilities.Abstractions
             _entityPoco = (TEntity)Activator.CreateInstance(typeof(TEntity)); 
             this._entityeValidating.Value.Validate(entityDTO, _isNewEntity);
             _entityPoco = this._entityeMapping.Value.MapEntity(_entityPoco, entityDTO, _isNewEntity);
-            this._entityRepositry.Value.Add(_entityPoco);
-            await this._entityRepositry.Value.SubmitChanges();
+            this._entityRepositry.Value.AddAsync(_entityPoco);
+            await this._entityRepositry.Value.SaveChangesAsync();
 
             return this._mapper.Map<TEntityDTO>(_entityPoco);
         }
@@ -70,7 +70,7 @@ namespace Sample.BLLayer.BLUtilities.Abstractions
                 this._entityeValidating.Value.Validate(entityDTO, _isNewEntity);
                 _entityPoco = this._entityeMapping.Value.MapEntity(_entityPoco, entityDTO, _isNewEntity);
                 this._entityRepositry.Value.Update(_entityPoco);
-                await this._entityRepositry.Value.SubmitChanges();
+                await this._entityRepositry.Value.SaveChangesAsync();
                 return this._mapper.Map<TEntityDTO>(_entityPoco); ;
             }
             else
@@ -85,7 +85,7 @@ namespace Sample.BLLayer.BLUtilities.Abstractions
             if (_entityPoco != null)
             {
                 this._entityRepositry.Value.Remove(_entityPoco);
-                await this._entityRepositry.Value.SubmitChanges();
+                await this._entityRepositry.Value.SaveChangesAsync();
                 return this._mapper.Map<TEntityDTO>(_entityPoco);
             }
             else

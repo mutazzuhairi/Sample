@@ -37,7 +37,7 @@ namespace Sample.BLLayer.Extends.ExtendServices
 
         public async Task<AuthResponseModel> Login(UserAuthModel userAuthModel)
         {
-            var user = await _userQueryService.Value.FindByEmailAsync(userAuthModel.Email);
+            var user = await _userQueryService.Value.FindByEmailAsync(userAuthModel.UserName);
             if (user == null || !await CheckUserPassword(user, userAuthModel.Password))
                 return null;
             var loggedUser = this._mapper.Map<UserView>(user);
@@ -50,15 +50,13 @@ namespace Sample.BLLayer.Extends.ExtendServices
         private string GenerateJwtToken(long userId, string userName)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes(_jwtSettings.GetSection(BLLayerConstatnts.AppSettings.SECURITY_KEY).Value);
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(new[] {
                     new Claim(ClaimTypes.NameIdentifier, userId.ToString()),
                     new Claim(ClaimTypes.Name, userName.ToString())
                 }),
-                Expires = DateTime.UtcNow.AddMinutes(Convert.ToDouble(_jwtSettings.GetSection(BLLayerConstatnts.AppSettings.EXPIRY_IN_MINUTEW).Value)),
-                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+                Expires = DateTime.Now.AddMinutes(Convert.ToDouble(_jwtSettings.GetSection(BLLayerConstatnts.AppSettings.EXPIRY_IN_MINUTEW).Value)),
             };
             var token = tokenHandler.CreateToken(tokenDescriptor);
             return tokenHandler.WriteToken(token);

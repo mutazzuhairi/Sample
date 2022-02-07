@@ -15,7 +15,7 @@ namespace Sample.BLLayer.BLUtilities.SystemConstants
         public class AppSettings
         {
             public const string JWT_SETTINGS = "JwtSettings";
-            public const string SECURITY_KEY = "SecurityKey";
+            public const string SECURITY_KEY = "Key";
             public const string EXPIRY_IN_MINUTEW = "ExpiryInMinutes";
         }
     }

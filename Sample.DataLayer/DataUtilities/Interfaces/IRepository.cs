@@ -5,11 +5,12 @@ namespace Sample.DataLayer.DataUtilities.Interfaces
 {
     public interface IRepository <TEntity>
     {
-        void Add(TEntity entity);
+        void AddAsync(TEntity entity);
         void Remove(TEntity entity);
         void Update(TEntity entity);
-        IQueryable<TEntity> GetAll();
+        IQueryable<TEntity> AsQueryable();
         Task<TEntity> FindAsync(params object[] keyValues);
-        Task<int> SubmitChanges();
+        Task<int> CountAsync();
+        Task<int> SaveChangesAsync();
     }
 }
