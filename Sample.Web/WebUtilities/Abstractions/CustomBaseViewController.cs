@@ -40,7 +40,7 @@ namespace Sample.Web.WebUtilities.Abstractions
 
 
         [HttpGet("{id}")]
-        public virtual async Task<ActionResult<TEntityView>> Get([Required][FromQuery] Tkey id)
+        public virtual async Task<ActionResult<TEntityView>> Get([Required][FromRoute] Tkey id)
         {
             string route = Request.Path.Value;
             TEntityView tEntityView = await _entityQueryService.Value.GetSingleViewAsync(route, id);

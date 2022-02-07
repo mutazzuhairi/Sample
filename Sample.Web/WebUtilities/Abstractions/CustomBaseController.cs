@@ -48,7 +48,7 @@ namespace Sample.Web.WebUtilities.Abstractions
 
 
         [HttpGet("{id}")]
-        public virtual async Task<ActionResult<TEntityDTO>> Get(Tkey id)
+        public virtual async Task<ActionResult<TEntityDTO>> Get([Required][FromRoute] Tkey id)
         {
             string route = Request.Path.Value;
             TEntityDTO tEntityView = await _entityQueryService.Value.GetSingleAsync(route, id);
@@ -69,7 +69,7 @@ namespace Sample.Web.WebUtilities.Abstractions
         }
 
         [HttpPut("{id}")]
-        public virtual async Task<ActionResult<TEntityDTO>> Put([Required][FromQuery] Tkey id, [FromBody]TEntityDTO entityDTO)
+        public virtual async Task<ActionResult<TEntityDTO>> Put([Required][FromRoute] Tkey id, [FromBody]TEntityDTO entityDTO)
         {
 
             entityDTO = await _entityUpdateService.Value.UpdateAsync(entityDTO, id);
@@ -81,7 +81,7 @@ namespace Sample.Web.WebUtilities.Abstractions
 
 
         [HttpDelete("{id}")]
-        public virtual async Task<ActionResult<TEntityDTO>> Delete([Required][FromQuery] Tkey id)
+        public virtual async Task<ActionResult<TEntityDTO>> Delete([Required][FromRoute] Tkey id)
         {
 
             TEntityDTO entityDTO = await _entityUpdateService.Value.DeleteAsync(id);
