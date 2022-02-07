@@ -16,6 +16,7 @@ namespace Sample.BLLayer.BLUtilities.Configuration.AutoMapper.Configuration.Gene
     {
         public static void AddAutoMapperConfiguration(this IServiceCollection services)
         {
+
            services.AddAutoMapper(typeof(RoleAutoMapperConfiguration));
            services.AddAutoMapper(typeof(RoleClaimAutoMapperConfiguration));
            services.AddAutoMapper(typeof(UserAutoMapperConfiguration));

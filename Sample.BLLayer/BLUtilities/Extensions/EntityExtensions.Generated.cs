@@ -48,6 +48,7 @@ namespace Sample.BLLayer.BLUtilities.Extensions
 
         private static void AddValidatingToScope(IServiceCollection services)
         {
+
            services.AddScoped<IRoleValidating, RoleValidating>();
            services.AddScoped<IRoleClaimValidating, RoleClaimValidating>();
            services.AddScoped<IUserValidating, UserValidating>();
@@ -60,6 +61,7 @@ namespace Sample.BLLayer.BLUtilities.Extensions
 
         private static void AddMappingToScope(IServiceCollection services)
         {
+
            services.AddScoped<IRoleMapping, RoleMapping>();
            services.AddScoped<IRoleClaimMapping, RoleClaimMapping>();
            services.AddScoped<IUserMapping, UserMapping>();

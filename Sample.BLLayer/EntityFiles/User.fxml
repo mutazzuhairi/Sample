@@ -55,26 +55,4 @@
     IsPrimaryKey="false"
     IsMaxLength="false"
     IncludeInSearchField="true" />
-  <field
-    Id="&quot;e95fb1e1-c813-4fb5-89e2-ef57b539afb4&quot;"
-    FieldName="&quot;ContactId&quot;"
-    OldFieldName="&quot;ContactId&quot;"
-    IsNew="true"
-    IsChecked="true"
-    IsDeleted="false"
-    IsDBField="true"
-    IsDTOField="true"
-    IsViewField="true"
-    FieldDataType="&quot;Long&quot;"
-    IsRequired="true"
-    UniqueField="false"
-    HasIndex="false"
-    InActive="false"
-    IsNullable="false"
-    IsForeignKey="true"
-    ForeignEntity="Contact"
-    NavigationPropertyName="&quot;Contact&quot;"
-    IsPrimaryKey="false"
-    IsMaxLength="false"
-    IncludeInSearchField="false" />
 </entity>
