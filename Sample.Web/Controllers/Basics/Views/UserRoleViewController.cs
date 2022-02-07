@@ -8,7 +8,7 @@ using Sample.DataLayer.DataUtilities.HelperServices.Interfaces;
 namespace Sample.Web.Controllers.Basics.Views
 {
  
-    public class UserRoleViewController : CustomBaseViewController<UserRoleDTO, UserRoleView, IUserRoleQueryService>
+    public class UserRoleViewController : CustomBaseViewController<UserRoleDTO, UserRoleView, IUserRoleQueryService, long>
     {
 
         private readonly Lazy<IUserRoleQueryService> _entityQueryService;

@@ -8,7 +8,7 @@ using Sample.DataLayer.DataUtilities.HelperServices.Interfaces;
 namespace Sample.Web.Controllers.Basics.Views
 {
  
-    public class UserClaimViewController : CustomBaseViewController<UserClaimDTO, UserClaimView, IUserClaimQueryService>
+    public class UserClaimViewController : CustomBaseViewController<UserClaimDTO, UserClaimView, IUserClaimQueryService, int>
     {
 
         private readonly Lazy<IUserClaimQueryService> _entityQueryService;

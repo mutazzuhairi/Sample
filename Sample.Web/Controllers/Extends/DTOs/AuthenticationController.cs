@@ -14,7 +14,6 @@ using Sample.DataLayer.DataUtilities.HelperServices.Interfaces;
 namespace Sample.Web.Controllers.Extends.DTOs
 {
     [ApiController]
-    [Authorize]
     [Route("api/[controller]")]
     public class AuthenticationController : ControllerBase
     {
@@ -55,15 +54,6 @@ namespace Sample.Web.Controllers.Extends.DTOs
             UserDTO userDTO = this._mapper.Map<UserDTO>(signUpUserModel);
             await _userUpdateService.Value.CustomCreateAsync(userDTO, signUpUserModel.Password);
             return Ok(new Response<UserDTO>(userDTO));
- 
-        }
- 
-
-        [HttpPut("EnableUser/{email}")]
-        public async Task<ActionResult<UserDTO>> PutEnableUser(string userId)
-        { 
-            await _userUpdateService.Value.SetLockoutEnabledAsync(userId, true);
-            return Ok();
  
         }
     }

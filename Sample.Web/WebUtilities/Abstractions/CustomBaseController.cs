@@ -8,6 +8,7 @@ using Sample.BLLayer.BLUtilities.Abstractions;
 using Sample.BLLayer.BLUtilities.HelperModels;
 using Sample.Web.WebUtilities.Interfaces;
 using Sample.DataLayer.DataUtilities.HelperServices.Interfaces;
+using System.ComponentModel.DataAnnotations;
 
 namespace Sample.Web.WebUtilities.Abstractions
 {
@@ -59,7 +60,7 @@ namespace Sample.Web.WebUtilities.Abstractions
  
 
         [HttpPost]
-        public virtual async Task<ActionResult<TEntityDTO>> Post(TEntityDTO entityDTO)
+        public virtual async Task<ActionResult<TEntityDTO>> Post([FromBody] TEntityDTO entityDTO)
         {
 
             entityDTO = await _entityUpdateService.Value.CreateAsync(entityDTO);
@@ -67,28 +68,28 @@ namespace Sample.Web.WebUtilities.Abstractions
 
         }
 
-        //[HttpPut]
-        //public virtual async Task<ActionResult<TEntityDTO>> Put(Tkey id, TEntityDTO entityDTO)
-        //{
+        [HttpPut("{id}")]
+        public virtual async Task<ActionResult<TEntityDTO>> Put([Required][FromQuery] Tkey id, [FromBody]TEntityDTO entityDTO)
+        {
 
-        //    entityDTO = await _entityUpdateService.Value.UpdateAsync(entityDTO, id);
-        //    if (entityDTO == null)
-        //        return NotFound();
-        //    return Ok(new Response<TEntityDTO>(entityDTO));
+            entityDTO = await _entityUpdateService.Value.UpdateAsync(entityDTO, id);
+            if (entityDTO == null)
+                return NotFound();
+            return Ok(new Response<TEntityDTO>(entityDTO));
 
-        //}
+        }
 
 
-        //[HttpDelete("{id}")]
-        //public virtual async Task<ActionResult<TEntityDTO>> Delete(Tkey id)
-        //{
+        [HttpDelete("{id}")]
+        public virtual async Task<ActionResult<TEntityDTO>> Delete([Required][FromQuery] Tkey id)
+        {
 
-        //    TEntityDTO entityDTO = await _entityUpdateService.Value.DeleteAsync(id);
-        //    if (entityDTO == null)
-        //        return NotFound();
-        //    return Ok(new Response<TEntityDTO>(entityDTO));
+            TEntityDTO entityDTO = await _entityUpdateService.Value.DeleteAsync(id);
+            if (entityDTO == null)
+                return NotFound();
+            return Ok(new Response<TEntityDTO>(entityDTO));
 
-        //}
+        }
 
 
     }

@@ -14,7 +14,7 @@ namespace Sample.DataLayer.Data.Configuration
 
         private Role[] SeedData()
         {
-            Role[] roles = new Role[3];
+            Role[] roles = new Role[1];
             roles[0] = new Role
             {
                 Id = 1,
@@ -22,21 +22,6 @@ namespace Sample.DataLayer.Data.Configuration
                 NormalizedName = "ADMIN",
                 SearchField = "System"
             };
-            roles[1] = new Role
-            {
-                Id = 2,
-                Name = "Vendor",
-                NormalizedName = "VENDOR",
-                SearchField = "System"
-            };
-            roles[2] = new Role
-            {
-                Id = 3,
-                Name = "Customer",
-                NormalizedName = "CUSTOMER",
-                SearchField = "System"
-            };
-
             return roles;
         }
     }

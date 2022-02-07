@@ -8,7 +8,7 @@ using Sample.DataLayer.DataUtilities.HelperServices.Interfaces;
 namespace Sample.Web.Controllers.Basics.Views
 {
  
-    public class UserTokenViewController : CustomBaseViewController<UserTokenDTO, UserTokenView, IUserTokenQueryService>
+    public class UserTokenViewController : CustomBaseViewController<UserTokenDTO, UserTokenView, IUserTokenQueryService, long>
     {
 
         private readonly Lazy<IUserTokenQueryService> _entityQueryService;

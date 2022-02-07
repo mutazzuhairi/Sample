@@ -7,13 +7,14 @@ using Sample.BLLayer.BLUtilities.Interfaces;
 using Sample.BLLayer.BLUtilities.HelperModels;
 using Sample.DataLayer.DataUtilities.HelperServices.Interfaces;
 using Sample.BLLayer.BLUtilities.HelperServices;
+using System.ComponentModel.DataAnnotations;
 
 namespace Sample.Web.WebUtilities.Abstractions
 {
     [ApiController]
     //[Authorize]
     [Route("api/[controller]")]
-    public class CustomBaseViewController<TEntityDTO, TEntityView, TQueryService> : ControllerBase
+    public class CustomBaseViewController<TEntityDTO, TEntityView, TQueryService, Tkey> : ControllerBase
         where TQueryService : IQueryService<TEntityDTO, TEntityView>
     {
 
@@ -39,7 +40,7 @@ namespace Sample.Web.WebUtilities.Abstractions
 
 
         [HttpGet("{id}")]
-        public virtual async Task<ActionResult<TEntityView>> Get(int id)
+        public virtual async Task<ActionResult<TEntityView>> Get([Required][FromQuery] Tkey id)
         {
             string route = Request.Path.Value;
             TEntityView tEntityView = await _entityQueryService.Value.GetSingleViewAsync(route, id);
