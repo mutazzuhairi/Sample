@@ -14,25 +14,25 @@ using Sample.BLLayer.BLUtilities.Abstractions;
 namespace Sample.BLLayer.EntityDTOs
 {
  
-    public partial class UserDTO : BaseEntityDTO<long>
+    public partial class AbsenceDTO : BaseEntityDTO<long>
     {
          [Key]
          public override long Id { get; set; }
          [Required]
-         
-         [StringLength(100)]
-         public string FirstName { get; set; }
+         public long UserId { get; set; }
+         [Required]
+         public long BusinessAbsenceTypeId { get; set; }
+         [Required]
+         public DateTime FromDate { get; set; }
+         [Required]
+         public DateTime ToDate { get; set; }
          [Required]
          
-         [StringLength(100)]
-         public string LastName { get; set; }
-         public DateTime? DateOfBirth { get; set; }
-         public DateTime? RegistrationDate { get; set; }
-         [Required]
-         public long BusinessId { get; set; }
-         public virtual BusinessDTO Business { get; set; }
-         public virtual ICollection<AbsenceDTO> AbsenceUser { get; set; }
-         public virtual ICollection<AbsenceApprovalDTO> AbsenceApprovalUser { get; set; }
+         [StringLength(15)]
+         public string Status { get; set; }
+         public virtual UserDTO User { get; set; }
+         public virtual BusinessAbsenceTypeDTO BusinessAbsenceType { get; set; }
+         public virtual ICollection<AbsenceApprovalDTO> AbsenceApprovalAbsence { get; set; }
  
     }
 }

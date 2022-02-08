@@ -14,16 +14,13 @@ using Sample.BLLayer.BLUtilities.Abstractions;
 namespace Sample.BLLayer.EntityViews
 {
  
-    public partial class UserView : BaseEntityView<long>
+    public partial class BusinessAbsenceTypeView : BaseEntityView<long>
     {
-         public string FirstName { get; set; }
-         public string LastName { get; set; }
-         public DateTime? DateOfBirth { get; set; }
-         public DateTime? RegistrationDate { get; set; }
          public long BusinessId { get; set; }
+         public long AbsenceTypeId { get; set; }
          public virtual BusinessView Business { get; set; }
-         public virtual ICollection<AbsenceView> AbsenceUser { get; set; }
-         public virtual ICollection<AbsenceApprovalView> AbsenceApprovalUser { get; set; }
+         public virtual AbsenceTypeView AbsenceType { get; set; }
+         public virtual ICollection<AbsenceView> AbsenceBusinessAbsenceType { get; set; }
  
     }
 }

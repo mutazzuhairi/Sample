@@ -36,6 +36,11 @@ namespace Sample.BLLayer.BLUtilities.Extensions
         private static void AddRepositriesToScope(IServiceCollection services)
         {
 
+           services.AddScoped<IAbsenceRepositry, AbsenceRepositry>();
+           services.AddScoped<IAbsenceApprovalRepositry, AbsenceApprovalRepositry>();
+           services.AddScoped<IAbsenceTypeRepositry, AbsenceTypeRepositry>();
+           services.AddScoped<IBusinessRepositry, BusinessRepositry>();
+           services.AddScoped<IBusinessAbsenceTypeRepositry, BusinessAbsenceTypeRepositry>();
            services.AddScoped<IRoleRepositry, RoleRepositry>();
            services.AddScoped<IRoleClaimRepositry, RoleClaimRepositry>();
            services.AddScoped<IUserRepositry, UserRepositry>();
@@ -49,6 +54,11 @@ namespace Sample.BLLayer.BLUtilities.Extensions
         private static void AddValidatingToScope(IServiceCollection services)
         {
 
+           services.AddScoped<IAbsenceValidating, AbsenceValidating>();
+           services.AddScoped<IAbsenceApprovalValidating, AbsenceApprovalValidating>();
+           services.AddScoped<IAbsenceTypeValidating, AbsenceTypeValidating>();
+           services.AddScoped<IBusinessValidating, BusinessValidating>();
+           services.AddScoped<IBusinessAbsenceTypeValidating, BusinessAbsenceTypeValidating>();
            services.AddScoped<IRoleValidating, RoleValidating>();
            services.AddScoped<IRoleClaimValidating, RoleClaimValidating>();
            services.AddScoped<IUserValidating, UserValidating>();
@@ -62,6 +72,11 @@ namespace Sample.BLLayer.BLUtilities.Extensions
         private static void AddMappingToScope(IServiceCollection services)
         {
 
+           services.AddScoped<IAbsenceMapping, AbsenceMapping>();
+           services.AddScoped<IAbsenceApprovalMapping, AbsenceApprovalMapping>();
+           services.AddScoped<IAbsenceTypeMapping, AbsenceTypeMapping>();
+           services.AddScoped<IBusinessMapping, BusinessMapping>();
+           services.AddScoped<IBusinessAbsenceTypeMapping, BusinessAbsenceTypeMapping>();
            services.AddScoped<IRoleMapping, RoleMapping>();
            services.AddScoped<IRoleClaimMapping, RoleClaimMapping>();
            services.AddScoped<IUserMapping, UserMapping>();
@@ -75,6 +90,11 @@ namespace Sample.BLLayer.BLUtilities.Extensions
         private static void AddUpdateServicesToScope(IServiceCollection services)
         {
 
+           services.AddScoped<IAbsenceUpdateService, AbsenceUpdateService>();
+           services.AddScoped<IAbsenceApprovalUpdateService, AbsenceApprovalUpdateService>();
+           services.AddScoped<IAbsenceTypeUpdateService, AbsenceTypeUpdateService>();
+           services.AddScoped<IBusinessUpdateService, BusinessUpdateService>();
+           services.AddScoped<IBusinessAbsenceTypeUpdateService, BusinessAbsenceTypeUpdateService>();
            services.AddScoped<IRoleUpdateService, RoleUpdateService>();
            services.AddScoped<IRoleClaimUpdateService, RoleClaimUpdateService>();
            services.AddScoped<IUserUpdateService, UserUpdateService>();
@@ -88,6 +108,11 @@ namespace Sample.BLLayer.BLUtilities.Extensions
         private static void AddQueryServicesToScope(IServiceCollection services)
         {
 
+           services.AddScoped<IAbsenceQueryService, AbsenceQueryService>();
+           services.AddScoped<IAbsenceApprovalQueryService, AbsenceApprovalQueryService>();
+           services.AddScoped<IAbsenceTypeQueryService, AbsenceTypeQueryService>();
+           services.AddScoped<IBusinessQueryService, BusinessQueryService>();
+           services.AddScoped<IBusinessAbsenceTypeQueryService, BusinessAbsenceTypeQueryService>();
            services.AddScoped<IRoleQueryService, RoleQueryService>();
            services.AddScoped<IRoleClaimQueryService, RoleClaimQueryService>();
            services.AddScoped<IUserQueryService, UserQueryService>();

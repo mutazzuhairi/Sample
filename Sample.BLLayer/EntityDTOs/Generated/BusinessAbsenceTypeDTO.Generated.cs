@@ -11,19 +11,20 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using Sample.BLLayer.BLUtilities.Abstractions;
 
-namespace Sample.BLLayer.EntityViews
+namespace Sample.BLLayer.EntityDTOs
 {
  
-    public partial class UserView : BaseEntityView<long>
+    public partial class BusinessAbsenceTypeDTO : BaseEntityDTO<long>
     {
-         public string FirstName { get; set; }
-         public string LastName { get; set; }
-         public DateTime? DateOfBirth { get; set; }
-         public DateTime? RegistrationDate { get; set; }
+         [Key]
+         public override long Id { get; set; }
+         [Required]
          public long BusinessId { get; set; }
-         public virtual BusinessView Business { get; set; }
-         public virtual ICollection<AbsenceView> AbsenceUser { get; set; }
-         public virtual ICollection<AbsenceApprovalView> AbsenceApprovalUser { get; set; }
+         [Required]
+         public long AbsenceTypeId { get; set; }
+         public virtual BusinessDTO Business { get; set; }
+         public virtual AbsenceTypeDTO AbsenceType { get; set; }
+         public virtual ICollection<AbsenceDTO> AbsenceBusinessAbsenceType { get; set; }
  
     }
 }

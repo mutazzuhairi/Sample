@@ -17,27 +17,24 @@ using Microsoft.EntityFrameworkCore;
 namespace Sample.DataLayer.Data.Models.Entities
 {
 
-    public partial class User : IBaseEntity<long>
+    public partial class BusinessAbsenceType : BaseEntity<long>
     {
-         [Required]
-         [Column(TypeName = "varchar")]
-         [StringLength(100)]
-         public string FirstName { get; set; }
-         [Required]
-         [Column(TypeName = "varchar")]
-         [StringLength(100)]
-         public string LastName { get; set; }
-         public DateTime? DateOfBirth { get; set; }
-         public DateTime? RegistrationDate { get; set; }
+         [Key]
+         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+         [Column(Order = 0)]
+         public override long Id { get; set; }
          [Required]
          public long BusinessId { get; set; }
+         [Required]
+         public long AbsenceTypeId { get; set; }
          [ForeignKey(nameof(BusinessId))]
-         [InverseProperty(nameof(Sample.DataLayer.Data.Models.Entities.Business.UserBusiness))]
+         [InverseProperty(nameof(Sample.DataLayer.Data.Models.Entities.Business.BusinessAbsenceTypeBusiness))]
          public virtual Business Business { get; set; }
-         [InverseProperty(nameof(Absence.User))]
-         public virtual ICollection<Absence> AbsenceUser { get; set; }
-         [InverseProperty(nameof(AbsenceApproval.User))]
-         public virtual ICollection<AbsenceApproval> AbsenceApprovalUser { get; set; }
+         [ForeignKey(nameof(AbsenceTypeId))]
+         [InverseProperty(nameof(Sample.DataLayer.Data.Models.Entities.AbsenceType.BusinessAbsenceTypeAbsenceType))]
+         public virtual AbsenceType AbsenceType { get; set; }
+         [InverseProperty(nameof(Absence.BusinessAbsenceType))]
+         public virtual ICollection<Absence> AbsenceBusinessAbsenceType { get; set; }
     
     }
 }

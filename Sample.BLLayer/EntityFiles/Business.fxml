@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<entity
+  Id="&quot;7eb2405e-590e-42b7-8b3a-e7dbfd2f1f9d&quot;"
+  IsNew="true"
+  TableName="&quot;Business&quot;"
+  BaseIdType="&quot;Long&quot;"
+  BaseType="&quot;BaseEntity&quot;"
+  IsBaseIdPrimaryKey="true"
+  OldTableName="&quot;Business&quot;"
+  InActive="false"
+  NoObjectTable="false"
+  NoViewController="false"
+  NoDTOController="false">
+  <field
+    Id="&quot;8ca77244-364a-48f4-9f7f-b7106cfeac90&quot;"
+    FieldName="&quot;Name&quot;"
+    OldFieldName="&quot;Name&quot;"
+    IsNew="false"
+    IsChecked="true"
+    IsDeleted="false"
+    IsDBField="true"
+    IsDTOField="true"
+    IsViewField="true"
+    FieldDataType="&quot;Text&quot;"
+    MinLength="0"
+    MaxLength="50"
+    IsRequired="true"
+    UniqueField="false"
+    HasIndex="false"
+    InActive="false"
+    IsNullable="false"
+    IsForeignKey="false"
+    IsPrimaryKey="false"
+    IsMaxLength="false"
+    IncludeInSearchField="true" />
+</entity>

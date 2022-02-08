@@ -31,6 +31,11 @@ namespace Sample.DataLayer.DataUtilities.DBContext
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.AddRestrictToRelationshipOnDelete();
+            modelBuilder.ApplyConfiguration(new  AbsenceConfiguration());
+            modelBuilder.ApplyConfiguration(new  AbsenceApprovalConfiguration());
+            modelBuilder.ApplyConfiguration(new  AbsenceTypeConfiguration());
+            modelBuilder.ApplyConfiguration(new  BusinessConfiguration());
+            modelBuilder.ApplyConfiguration(new  BusinessAbsenceTypeConfiguration());
             modelBuilder.ApplyConfiguration(new  RoleConfiguration());
             modelBuilder.ApplyConfiguration(new  RoleClaimConfiguration());
             modelBuilder.ApplyConfiguration(new  UserConfiguration());
@@ -41,6 +46,11 @@ namespace Sample.DataLayer.DataUtilities.DBContext
             
         } 
 
+        public DbSet<Absence> Absences { get; set; }
+        public DbSet<AbsenceApproval> AbsenceApprovals { get; set; }
+        public DbSet<AbsenceType> AbsenceTypes { get; set; }
+        public DbSet<Business> Businesss { get; set; }
+        public DbSet<BusinessAbsenceType> BusinessAbsenceTypes { get; set; }
         public override DbSet<Role> Roles { get; set; }
         public override DbSet<RoleClaim> RoleClaims { get; set; }
         public override DbSet<User> Users { get; set; }
