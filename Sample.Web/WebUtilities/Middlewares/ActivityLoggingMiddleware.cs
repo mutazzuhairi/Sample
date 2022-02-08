@@ -1,5 +1,4 @@
 ﻿using Sample.BLLayer.BLUtilities.HelperServices;
-using Sample.DataLayer.Data.Models.Entities;
 using Sample.DataLayer.DataUtilities.HelperServices.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
@@ -28,11 +27,9 @@ namespace Sample.Web.WebUtilities.Middlewares
         }
 
         public async Task InvokeAsync(HttpContext httpContext,
-                                      UserManager<User> userManager,
                                       ISystemServiceProvider systemServiceProvider,
                                       ILogger<ActivityLoggingMiddleware> logger)
         {
-            await SetCurrentLoggeduser(httpContext.User.Identity.Name, userManager, systemServiceProvider);
             var sw = Stopwatch.StartNew();
             httpContext.Request.EnableBuffering();
             var body = await new StreamReader(httpContext.Request.Body).ReadToEndAsync();
@@ -98,16 +95,6 @@ namespace Sample.Web.WebUtilities.Middlewares
                         logger.LogInformation(message);
                         break;
                 }
-            }
-        }
-        private async Task SetCurrentLoggeduser(string userName,
-                                        UserManager<User> userManager,
-                                        ISystemServiceProvider systemServiceProvider)
-        {
-            if (!string.IsNullOrEmpty(userName))
-            {
-                User user = await userManager.FindByEmailAsync(userName);
-                systemServiceProvider.SetCurrentUser(user);
             }
         }
     }

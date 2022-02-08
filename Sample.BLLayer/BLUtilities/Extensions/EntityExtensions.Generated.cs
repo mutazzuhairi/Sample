@@ -7,16 +7,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 using Microsoft.Extensions.DependencyInjection;
-using Sample.BLLayer.Mapping;
-using Sample.BLLayer.QueryServices;
-using Sample.BLLayer.UpdateServices;
-using Sample.BLLayer.Validating;
-using Sample.DataLayer.Data.Repositries;
-using Sample.DataLayer.Data.Repositries.Interfaces;
-using Sample.BLLayer.Mapping.Interfaces;
-using Sample.BLLayer.QueryServices.Interfaces;
-using Sample.BLLayer.UpdateServices.Interfaces;
-using Sample.BLLayer.Validating.Interfaces;
 
 namespace Sample.BLLayer.BLUtilities.Extensions
 {
@@ -35,66 +25,31 @@ namespace Sample.BLLayer.BLUtilities.Extensions
 
         private static void AddRepositriesToScope(IServiceCollection services)
         {
-
-           services.AddScoped<IRoleRepositry, RoleRepositry>();
-           services.AddScoped<IRoleClaimRepositry, RoleClaimRepositry>();
-           services.AddScoped<IUserRepositry, UserRepositry>();
-           services.AddScoped<IUserClaimRepositry, UserClaimRepositry>();
-           services.AddScoped<IUserLoginRepositry, UserLoginRepositry>();
-           services.AddScoped<IUserRoleRepositry, UserRoleRepositry>();
-           services.AddScoped<IUserTokenRepositry, UserTokenRepositry>();
+             
        
         }
 
         private static void AddValidatingToScope(IServiceCollection services)
         {
-
-           services.AddScoped<IRoleValidating, RoleValidating>();
-           services.AddScoped<IRoleClaimValidating, RoleClaimValidating>();
-           services.AddScoped<IUserValidating, UserValidating>();
-           services.AddScoped<IUserClaimValidating, UserClaimValidating>();
-           services.AddScoped<IUserLoginValidating, UserLoginValidating>();
-           services.AddScoped<IUserRoleValidating, UserRoleValidating>();
-           services.AddScoped<IUserTokenValidating, UserTokenValidating>();
+             
        
         }
 
         private static void AddMappingToScope(IServiceCollection services)
         {
-
-           services.AddScoped<IRoleMapping, RoleMapping>();
-           services.AddScoped<IRoleClaimMapping, RoleClaimMapping>();
-           services.AddScoped<IUserMapping, UserMapping>();
-           services.AddScoped<IUserClaimMapping, UserClaimMapping>();
-           services.AddScoped<IUserLoginMapping, UserLoginMapping>();
-           services.AddScoped<IUserRoleMapping, UserRoleMapping>();
-           services.AddScoped<IUserTokenMapping, UserTokenMapping>();
+             
        
         }
 
         private static void AddUpdateServicesToScope(IServiceCollection services)
         {
-
-           services.AddScoped<IRoleUpdateService, RoleUpdateService>();
-           services.AddScoped<IRoleClaimUpdateService, RoleClaimUpdateService>();
-           services.AddScoped<IUserUpdateService, UserUpdateService>();
-           services.AddScoped<IUserClaimUpdateService, UserClaimUpdateService>();
-           services.AddScoped<IUserLoginUpdateService, UserLoginUpdateService>();
-           services.AddScoped<IUserRoleUpdateService, UserRoleUpdateService>();
-           services.AddScoped<IUserTokenUpdateService, UserTokenUpdateService>();
+             
        
         }
 
         private static void AddQueryServicesToScope(IServiceCollection services)
         {
-
-           services.AddScoped<IRoleQueryService, RoleQueryService>();
-           services.AddScoped<IRoleClaimQueryService, RoleClaimQueryService>();
-           services.AddScoped<IUserQueryService, UserQueryService>();
-           services.AddScoped<IUserClaimQueryService, UserClaimQueryService>();
-           services.AddScoped<IUserLoginQueryService, UserLoginQueryService>();
-           services.AddScoped<IUserRoleQueryService, UserRoleQueryService>();
-           services.AddScoped<IUserTokenQueryService, UserTokenQueryService>();
+             
        
         }
     }

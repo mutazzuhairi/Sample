@@ -38,6 +38,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Data\Configuration\Generated\" />
+    <Folder Include="Data\Models\Entities\Generated\" />
+    <Folder Include="Data\Repositries\Interfaces\" />
     <Folder Include="Migrations\" />
     <Folder Include="SQL\Scripts\" />
   </ItemGroup>

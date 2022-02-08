@@ -22,7 +22,7 @@ using Sample.DataLayer.DataUtilities.Extensions;
 namespace <#= NameSpace #>
 {
  
-    public sealed class <#= ContextName #> : IdentityDbContext<User, Role, long, UserClaim, UserRole, UserLogin, RoleClaim, UserToken>
+    public sealed class <#= ContextName #> : IdentityDbContext
     {
         
         public <#= ContextName #> (DbContextOptions<<#= ContextName #>> options) : base(options)

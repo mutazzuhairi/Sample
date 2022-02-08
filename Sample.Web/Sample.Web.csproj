@@ -35,6 +35,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Controllers\Basics\DTOs\" />
+    <Folder Include="Controllers\Basics\Views\" />
+    <Folder Include="Controllers\Extends\DTOs\" />
     <Folder Include="Controllers\Extends\Views\" />
     <Folder Include="Data\Logs\" />
     <Folder Include="WebUtilities\HelperModels\" />

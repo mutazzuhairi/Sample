@@ -1,10 +1,8 @@
 ﻿using System;
-using System.IO;
 using System.Data;
 using System.Collections.Generic;
 using Microsoft.OpenApi.Models;
 using Microsoft.AspNetCore.Http;
-using Microsoft.Net.Http.Headers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -12,7 +10,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
-using Sample.DataLayer.Data.Models.Entities;
 using Sample.DataLayer.DataUtilities.DBContext;
 using Sample.BLLayer.BLUtilities.HelperServices;
 using Sample.DataLayer.DataUtilities.SystemConstants;
@@ -187,12 +184,7 @@ namespace Sample.Web.WebUtilities.Extensions
         {
             services.AddAutoMapperConfiguration();
             services.AddCustomAutoMapperConfiguration();
-        }
-
-        public static void  AddIdentityToConfigure(this IServiceCollection services)
-        {
-            services.AddIdentity<User, Role>().AddEntityFrameworkStores<MainContext>().AddDefaultTokenProviders();
-        }
+        } 
 
         public static void AddDefaultIdentityOptions(this IServiceCollection services, IConfiguration configuration)
         {

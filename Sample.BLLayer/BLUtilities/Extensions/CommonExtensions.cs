@@ -10,7 +10,6 @@ namespace Sample.BLLayer.BLUtilities.Extensions
     {
         public static void AddCommonServicesToConfigure(this IServiceCollection services)
         {
-            services.AddScoped<IAuthService, AuthenticateService>();
             services.AddScoped<IServiceBuildException, ServiceBuildException>();
             services.AddScoped<IPaginationHelper, PaginationHelper>();
             services.AddScoped<ICommonServices, CommonServices>();

@@ -8,14 +8,12 @@
 //------------------------------------------------------------------------------
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Sample.DataLayer.Data.Models.Entities;
-using Sample.DataLayer.Data.Configuration;
 using Sample.DataLayer.DataUtilities.Extensions;
 
 namespace Sample.DataLayer.DataUtilities.DBContext
 {
  
-    public sealed class MainContext : IdentityDbContext<User, Role, long, UserClaim, UserRole, UserLogin, RoleClaim, UserToken>
+    public sealed class MainContext : IdentityDbContext
     {
         
         public MainContext (DbContextOptions<MainContext> options) : base(options)
@@ -31,23 +29,9 @@ namespace Sample.DataLayer.DataUtilities.DBContext
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.AddRestrictToRelationshipOnDelete();
-            modelBuilder.ApplyConfiguration(new  RoleConfiguration());
-            modelBuilder.ApplyConfiguration(new  RoleClaimConfiguration());
-            modelBuilder.ApplyConfiguration(new  UserConfiguration());
-            modelBuilder.ApplyConfiguration(new  UserClaimConfiguration());
-            modelBuilder.ApplyConfiguration(new  UserLoginConfiguration());
-            modelBuilder.ApplyConfiguration(new  UserRoleConfiguration());
-            modelBuilder.ApplyConfiguration(new  UserTokenConfiguration());
             
         } 
-
-        public override DbSet<Role> Roles { get; set; }
-        public override DbSet<RoleClaim> RoleClaims { get; set; }
-        public override DbSet<User> Users { get; set; }
-        public override DbSet<UserClaim> UserClaims { get; set; }
-        public override DbSet<UserLogin> UserLogins { get; set; }
-        public override DbSet<UserRole> UserRoles { get; set; }
-        public override DbSet<UserToken> UserTokens { get; set; }
+ 
        
     }
 }

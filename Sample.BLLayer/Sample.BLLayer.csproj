@@ -15,8 +15,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="BLUtilities\Configuration\AutoMapper\Entities\" />
+    <Folder Include="EntityDTOs\Generated\" />
+    <Folder Include="EntityFiles\" />
     <Folder Include="EntityViews\Generated\" />
     <Folder Include="Mapping\Generated\" />
+    <Folder Include="Mapping\Interfaces\" />
+    <Folder Include="QueryServices\Interfaces\" />
+    <Folder Include="UpdateServices\Interfaces\" />
+    <Folder Include="Validating\Interfaces\" />
   </ItemGroup>
 
   <ItemGroup>

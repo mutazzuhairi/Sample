@@ -6,7 +6,6 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-using Sample.BLLayer.BLUtilities.Configuration.AutoMapper.Entities;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Sample.BLLayer.BLUtilities.Configuration.AutoMapper.Configuration.Generated
@@ -15,15 +14,7 @@ namespace Sample.BLLayer.BLUtilities.Configuration.AutoMapper.Configuration.Gene
     public static class AutoMapperConfigurationGenerated
     {
         public static void AddAutoMapperConfiguration(this IServiceCollection services)
-        {
-
-           services.AddAutoMapper(typeof(RoleAutoMapperConfiguration));
-           services.AddAutoMapper(typeof(RoleClaimAutoMapperConfiguration));
-           services.AddAutoMapper(typeof(UserAutoMapperConfiguration));
-           services.AddAutoMapper(typeof(UserClaimAutoMapperConfiguration));
-           services.AddAutoMapper(typeof(UserLoginAutoMapperConfiguration));
-           services.AddAutoMapper(typeof(UserRoleAutoMapperConfiguration));
-           services.AddAutoMapper(typeof(UserTokenAutoMapperConfiguration));
+        { 
        
         }
 

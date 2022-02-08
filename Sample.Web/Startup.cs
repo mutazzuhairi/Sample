@@ -30,7 +30,6 @@ namespace Sample.Web
             services.AddUriToConfigure();
             services.AddAutoMapperToConfigure();
             services.AddCorsSecurity(Configuration);
-            services.AddIdentityToConfigure();
             services.AddDefaultIdentityOptions(Configuration);
             services.SetJwtSettingsConfigure(Configuration);
             services.AddSwagger(Configuration);

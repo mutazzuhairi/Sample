@@ -60,8 +60,7 @@ namespace ");
             #line hidden
             
             #line 25 "GeneratedStructure\T4GeneratedTemplates\EntitiesContextTemplate.tt"
-            this.Write(" : IdentityDbContext<User, Role, long, UserClaim, UserRole, UserLogin, RoleClaim," +
-                    " UserToken>\r\n    {\r\n        \r\n        public ");
+            this.Write(" : IdentityDbContext\r\n    {\r\n        \r\n        public ");
             
             #line default
             #line hidden
