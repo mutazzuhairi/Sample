@@ -18,6 +18,8 @@ namespace Sample.BLLayer.Extends.ExtendModels
         [Required]
         [StringLength(50)]
         public string Password { get; set; }
+        [Required]
+        public long BusinessId { get; set; }
 
     }
 }

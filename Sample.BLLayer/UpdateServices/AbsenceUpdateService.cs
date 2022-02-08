@@ -10,6 +10,8 @@ using Sample.DataLayer.Data.Repositries.Interfaces;
 using Sample.BLLayer.BLUtilities.HelperServices.Interfaces;
 using Sample.DataLayer.DataUtilities.HelperServices.Interfaces;
 using Sample.BLLayer.Extends.ExtendServices.Interfaces;
+using Sample.BLLayer.Extends.ExtendModels;
+using System.Threading.Tasks;
 
 namespace Sample.BLLayer.UpdateServices
 {
@@ -45,7 +47,15 @@ namespace Sample.BLLayer.UpdateServices
             _mapper = mapper;
             _cacheProvider = cacheProvider;
         }
- 
+
+        public virtual async Task<AbsenceDTO> CreateCustomAsync(AbsenceDemoDTO entityDTO)
+        {
+            var absenceDTO = this._mapper.Map<AbsenceDTO>(entityDTO);
+            absenceDTO.UserId = 5;
+            var result = await base.CreateAsync(absenceDTO);
+            return result;
+        }
+
     }
 
 }

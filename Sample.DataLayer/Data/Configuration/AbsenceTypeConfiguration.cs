@@ -6,11 +6,12 @@ using Sample.DataLayer.DataUtilities.Abstractions;
 namespace Sample.DataLayer.Data.Configuration
 {
  
-    public partial class AbsenceTypeConfiguration : BaseEntityTypeConfiguration<AbsenceType, long> 
+    public class AbsenceTypeConfiguration : BaseEntityTypeConfiguration<AbsenceType, long> 
     {
-        private void AbsenceTypeConfigure(EntityTypeBuilder<AbsenceType> builder)
+        public override void Configure(EntityTypeBuilder<AbsenceType> builder)
         {
             builder.HasCheckConstraint("constraint_name", "'Name' = 'Sick Leave' or 'Name' = 'Paid Time Off'");
+            base.Configure(builder);
         }
     }
 

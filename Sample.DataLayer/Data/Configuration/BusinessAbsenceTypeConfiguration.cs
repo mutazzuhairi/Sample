@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Sample.DataLayer.Data.Models.Entities;
 using Sample.DataLayer.DataUtilities.Abstractions;
@@ -5,11 +6,11 @@ using Sample.DataLayer.DataUtilities.Abstractions;
 namespace Sample.DataLayer.Data.Configuration
 {
  
-    public partial class BusinessAbsenceTypeConfiguration : BaseEntityTypeConfiguration<BusinessAbsenceType, long> 
+    public class BusinessAbsenceTypeConfiguration : BaseEntityTypeConfiguration<BusinessAbsenceType, long> 
     {
-        private void BusinessAbsenceTypeConfigure(EntityTypeBuilder<BusinessAbsenceType> builder)
+        public override void Configure(EntityTypeBuilder<BusinessAbsenceType> builder)
         {
-            
+            base.Configure(builder);
         }
     }
 

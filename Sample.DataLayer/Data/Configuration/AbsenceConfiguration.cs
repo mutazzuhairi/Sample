@@ -6,11 +6,13 @@ using Sample.DataLayer.DataUtilities.Abstractions;
 namespace Sample.DataLayer.Data.Configuration
 {
  
-    public partial class AbsenceConfiguration : BaseEntityTypeConfiguration<Absence, long> 
+    public class AbsenceConfiguration : BaseEntityTypeConfiguration<Absence, long> 
     {
-        private void AbsenceConfigure(EntityTypeBuilder<Absence> builder)
+        public override void Configure(EntityTypeBuilder<Absence> builder)
         {
             builder.HasCheckConstraint("constraint_status", "'Status' = 'New' or 'Status' = 'Approved' or 'Status' = 'Rejected'");
+            builder.Property(e => e.Status).HasDefaultValueSql("'New'");
+            base.Configure(builder);
         }
     }
 

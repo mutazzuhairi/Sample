@@ -1,6 +1,7 @@
 using AutoMapper;
 using Sample.BLLayer.EntityDTOs;
 using Sample.BLLayer.EntityViews;
+using Sample.BLLayer.Extends.ExtendModels;
 using Sample.DataLayer.Data.Models.Entities; 
 
 namespace Sample.BLLayer.BLUtilities.Configuration.AutoMapper.Entities
@@ -12,6 +13,7 @@ namespace Sample.BLLayer.BLUtilities.Configuration.AutoMapper.Entities
             CreateMap<Absence, AbsenceDTO>().ReverseMap();
             CreateMap<Absence, AbsenceView>().ReverseMap();
             CreateMap<AbsenceView, AbsenceDTO>().ReverseMap();
+            CreateMap<AbsenceDTO, AbsenceDemoDTO>().ReverseMap();
         }
     } 
 }

@@ -186,7 +186,6 @@ namespace Sample.Web.WebUtilities.Extensions
         public static void AddAutoMapperToConfigure(this IServiceCollection services)
         {
             services.AddAutoMapperConfiguration();
-            services.AddCustomAutoMapperConfiguration();
         }
 
         public static void  AddIdentityToConfigure(this IServiceCollection services)
