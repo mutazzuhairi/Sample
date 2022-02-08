@@ -60,12 +60,8 @@ namespace Sample.BLLayer.BLUtilities.Extensions
            services.AddScoped<IBusinessValidating, BusinessValidating>();
            services.AddScoped<IBusinessAbsenceTypeValidating, BusinessAbsenceTypeValidating>();
            services.AddScoped<IRoleValidating, RoleValidating>();
-           services.AddScoped<IRoleClaimValidating, RoleClaimValidating>();
            services.AddScoped<IUserValidating, UserValidating>();
-           services.AddScoped<IUserClaimValidating, UserClaimValidating>();
-           services.AddScoped<IUserLoginValidating, UserLoginValidating>();
            services.AddScoped<IUserRoleValidating, UserRoleValidating>();
-           services.AddScoped<IUserTokenValidating, UserTokenValidating>();
        
         }
 
@@ -78,12 +74,8 @@ namespace Sample.BLLayer.BLUtilities.Extensions
            services.AddScoped<IBusinessMapping, BusinessMapping>();
            services.AddScoped<IBusinessAbsenceTypeMapping, BusinessAbsenceTypeMapping>();
            services.AddScoped<IRoleMapping, RoleMapping>();
-           services.AddScoped<IRoleClaimMapping, RoleClaimMapping>();
            services.AddScoped<IUserMapping, UserMapping>();
-           services.AddScoped<IUserClaimMapping, UserClaimMapping>();
-           services.AddScoped<IUserLoginMapping, UserLoginMapping>();
            services.AddScoped<IUserRoleMapping, UserRoleMapping>();
-           services.AddScoped<IUserTokenMapping, UserTokenMapping>();
        
         }
 
@@ -96,12 +88,8 @@ namespace Sample.BLLayer.BLUtilities.Extensions
            services.AddScoped<IBusinessUpdateService, BusinessUpdateService>();
            services.AddScoped<IBusinessAbsenceTypeUpdateService, BusinessAbsenceTypeUpdateService>();
            services.AddScoped<IRoleUpdateService, RoleUpdateService>();
-           services.AddScoped<IRoleClaimUpdateService, RoleClaimUpdateService>();
            services.AddScoped<IUserUpdateService, UserUpdateService>();
-           services.AddScoped<IUserClaimUpdateService, UserClaimUpdateService>();
-           services.AddScoped<IUserLoginUpdateService, UserLoginUpdateService>();
            services.AddScoped<IUserRoleUpdateService, UserRoleUpdateService>();
-           services.AddScoped<IUserTokenUpdateService, UserTokenUpdateService>();
        
         }
 
@@ -114,12 +102,8 @@ namespace Sample.BLLayer.BLUtilities.Extensions
            services.AddScoped<IBusinessQueryService, BusinessQueryService>();
            services.AddScoped<IBusinessAbsenceTypeQueryService, BusinessAbsenceTypeQueryService>();
            services.AddScoped<IRoleQueryService, RoleQueryService>();
-           services.AddScoped<IRoleClaimQueryService, RoleClaimQueryService>();
            services.AddScoped<IUserQueryService, UserQueryService>();
-           services.AddScoped<IUserClaimQueryService, UserClaimQueryService>();
-           services.AddScoped<IUserLoginQueryService, UserLoginQueryService>();
            services.AddScoped<IUserRoleQueryService, UserRoleQueryService>();
-           services.AddScoped<IUserTokenQueryService, UserTokenQueryService>();
        
         }
     }

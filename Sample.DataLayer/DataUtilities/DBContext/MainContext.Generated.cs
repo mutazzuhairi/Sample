@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Sample.DataLayer.Data.Models.Entities;
 using Sample.DataLayer.Data.Configuration;
 using Sample.DataLayer.DataUtilities.Extensions;
+using Microsoft.AspNetCore.Identity;
 
 namespace Sample.DataLayer.DataUtilities.DBContext
 {
@@ -37,14 +38,27 @@ namespace Sample.DataLayer.DataUtilities.DBContext
             modelBuilder.ApplyConfiguration(new  BusinessConfiguration());
             modelBuilder.ApplyConfiguration(new  BusinessAbsenceTypeConfiguration());
             modelBuilder.ApplyConfiguration(new  RoleConfiguration());
-            modelBuilder.ApplyConfiguration(new  RoleClaimConfiguration());
             modelBuilder.ApplyConfiguration(new  UserConfiguration());
-            modelBuilder.ApplyConfiguration(new  UserClaimConfiguration());
-            modelBuilder.ApplyConfiguration(new  UserLoginConfiguration());
             modelBuilder.ApplyConfiguration(new  UserRoleConfiguration());
-            modelBuilder.ApplyConfiguration(new  UserTokenConfiguration());
-            
-        } 
+            modelBuilder.Ignore<UserToken>();
+            modelBuilder.Ignore<UserLogin>();
+            modelBuilder.Ignore<UserClaim>();
+            modelBuilder.Ignore<RoleClaim>();
+            modelBuilder.Entity<User>()
+                .Ignore(c => c.LockoutEnabled)
+                .Ignore(c => c.TwoFactorEnabled)
+                .Ignore(c => c.ConcurrencyStamp)
+                .Ignore(c => c.EmailConfirmed)
+                .Ignore(c => c.TwoFactorEnabled)
+                .Ignore(c => c.LockoutEnd)
+                .Ignore(c => c.AccessFailedCount)
+                .Ignore(c => c.PhoneNumberConfirmed)
+                .Ignore(c => c.NormalizedEmail)
+                .Ignore(c => c.PhoneNumber)
+                .Ignore(c => c.NormalizedUserName)
+                .Ignore(c => c.SecurityStamp);
+
+        }
 
         public DbSet<Absence> Absences { get; set; }
         public DbSet<AbsenceApproval> AbsenceApprovals { get; set; }
@@ -52,12 +66,8 @@ namespace Sample.DataLayer.DataUtilities.DBContext
         public DbSet<Business> Businesss { get; set; }
         public DbSet<BusinessAbsenceType> BusinessAbsenceTypes { get; set; }
         public override DbSet<Role> Roles { get; set; }
-        public override DbSet<RoleClaim> RoleClaims { get; set; }
         public override DbSet<User> Users { get; set; }
-        public override DbSet<UserClaim> UserClaims { get; set; }
-        public override DbSet<UserLogin> UserLogins { get; set; }
         public override DbSet<UserRole> UserRoles { get; set; }
-        public override DbSet<UserToken> UserTokens { get; set; }
        
     }
 }

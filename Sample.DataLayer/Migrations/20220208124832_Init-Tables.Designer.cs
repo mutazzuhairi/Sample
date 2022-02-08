@@ -10,8 +10,8 @@ using Sample.DataLayer.DataUtilities.DBContext;
 namespace Sample.DataLayer.Migrations
 {
     [DbContext(typeof(MainContext))]
-    [Migration("20220207213538_Init")]
-    partial class Init
+    [Migration("20220208124832_Init-Tables")]
+    partial class InitTables
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,6 +20,389 @@ namespace Sample.DataLayer.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.4")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("Sample.DataLayer.Data.Models.Entities.Absence", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<long>("BusinessAbsenceTypeId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("CreatedBy")
+                        .IsRequired()
+                        .ValueGeneratedOnAdd()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)")
+                        .HasDefaultValueSql("'System'");
+
+                    b.Property<DateTimeOffset>("CreatedDate")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetimeoffset(7)")
+                        .HasDefaultValueSql("(sysdatetimeoffset())");
+
+                    b.Property<DateTime>("FromDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Notes")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<string>("SearchField")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .ValueGeneratedOnAdd()
+                        .HasMaxLength(15)
+                        .HasColumnType("varchar(15)")
+                        .HasDefaultValueSql("'New'");
+
+                    b.Property<DateTime>("ToDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .IsRequired()
+                        .ValueGeneratedOnAdd()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)")
+                        .HasDefaultValueSql("'System'");
+
+                    b.Property<DateTimeOffset>("UpdatedDate")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetimeoffset(7)")
+                        .HasDefaultValueSql("(sysdatetimeoffset())");
+
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<byte[]>("Version")
+                        .IsConcurrencyToken()
+                        .IsRequired()
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("rowversion");
+
+                    b.Property<bool>("Void")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValueSql("(0)");
+
+                    b.Property<string>("VoidBy")
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<DateTimeOffset?>("VoidedDate")
+                        .HasColumnType("datetimeoffset(7)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BusinessAbsenceTypeId");
+
+                    b.HasIndex("SearchField")
+                        .HasFilter("[SearchField] IS NOT NULL");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Absences");
+
+                    b.HasCheckConstraint("constraint_status", "'Status' = 'New' or 'Status' = 'Approved' or 'Status' = 'Rejected'");
+                });
+
+            modelBuilder.Entity("Sample.DataLayer.Data.Models.Entities.AbsenceApproval", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<long>("AbsenceId")
+                        .HasColumnType("bigint");
+
+                    b.Property<bool>("Approved")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("CreatedBy")
+                        .IsRequired()
+                        .ValueGeneratedOnAdd()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)")
+                        .HasDefaultValueSql("'System'");
+
+                    b.Property<DateTimeOffset>("CreatedDate")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetimeoffset(7)")
+                        .HasDefaultValueSql("(sysdatetimeoffset())");
+
+                    b.Property<long>("ManagerId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Notes")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<string>("SearchField")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("UpdatedBy")
+                        .IsRequired()
+                        .ValueGeneratedOnAdd()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)")
+                        .HasDefaultValueSql("'System'");
+
+                    b.Property<DateTimeOffset>("UpdatedDate")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetimeoffset(7)")
+                        .HasDefaultValueSql("(sysdatetimeoffset())");
+
+                    b.Property<byte[]>("Version")
+                        .IsConcurrencyToken()
+                        .IsRequired()
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("rowversion");
+
+                    b.Property<bool>("Void")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValueSql("(0)");
+
+                    b.Property<string>("VoidBy")
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<DateTimeOffset?>("VoidedDate")
+                        .HasColumnType("datetimeoffset(7)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AbsenceId");
+
+                    b.HasIndex("ManagerId");
+
+                    b.HasIndex("SearchField")
+                        .HasFilter("[SearchField] IS NOT NULL");
+
+                    b.ToTable("AbsenceApprovals");
+                });
+
+            modelBuilder.Entity("Sample.DataLayer.Data.Models.Entities.AbsenceType", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CreatedBy")
+                        .IsRequired()
+                        .ValueGeneratedOnAdd()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)")
+                        .HasDefaultValueSql("'System'");
+
+                    b.Property<DateTimeOffset>("CreatedDate")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetimeoffset(7)")
+                        .HasDefaultValueSql("(sysdatetimeoffset())");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("varchar(250)");
+
+                    b.Property<string>("Notes")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<string>("SearchField")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("UpdatedBy")
+                        .IsRequired()
+                        .ValueGeneratedOnAdd()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)")
+                        .HasDefaultValueSql("'System'");
+
+                    b.Property<DateTimeOffset>("UpdatedDate")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetimeoffset(7)")
+                        .HasDefaultValueSql("(sysdatetimeoffset())");
+
+                    b.Property<int?>("ValidAfterDays")
+                        .HasColumnType("int");
+
+                    b.Property<byte[]>("Version")
+                        .IsConcurrencyToken()
+                        .IsRequired()
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("rowversion");
+
+                    b.Property<bool>("Void")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValueSql("(0)");
+
+                    b.Property<string>("VoidBy")
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<DateTimeOffset?>("VoidedDate")
+                        .HasColumnType("datetimeoffset(7)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SearchField")
+                        .HasFilter("[SearchField] IS NOT NULL");
+
+                    b.ToTable("AbsenceTypes");
+
+                    b.HasCheckConstraint("constraint_name", "'Name' = 'Sick Leave' or 'Name' = 'Paid Time Off'");
+                });
+
+            modelBuilder.Entity("Sample.DataLayer.Data.Models.Entities.Business", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CreatedBy")
+                        .IsRequired()
+                        .ValueGeneratedOnAdd()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)")
+                        .HasDefaultValueSql("'System'");
+
+                    b.Property<DateTimeOffset>("CreatedDate")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetimeoffset(7)")
+                        .HasDefaultValueSql("(sysdatetimeoffset())");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
+
+                    b.Property<string>("Notes")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<string>("SearchField")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("UpdatedBy")
+                        .IsRequired()
+                        .ValueGeneratedOnAdd()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)")
+                        .HasDefaultValueSql("'System'");
+
+                    b.Property<DateTimeOffset>("UpdatedDate")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetimeoffset(7)")
+                        .HasDefaultValueSql("(sysdatetimeoffset())");
+
+                    b.Property<byte[]>("Version")
+                        .IsConcurrencyToken()
+                        .IsRequired()
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("rowversion");
+
+                    b.Property<bool>("Void")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValueSql("(0)");
+
+                    b.Property<string>("VoidBy")
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<DateTimeOffset?>("VoidedDate")
+                        .HasColumnType("datetimeoffset(7)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SearchField")
+                        .HasFilter("[SearchField] IS NOT NULL");
+
+                    b.ToTable("Businesss");
+                });
+
+            modelBuilder.Entity("Sample.DataLayer.Data.Models.Entities.BusinessAbsenceType", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<long>("AbsenceTypeId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("BusinessId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("CreatedBy")
+                        .IsRequired()
+                        .ValueGeneratedOnAdd()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)")
+                        .HasDefaultValueSql("'System'");
+
+                    b.Property<DateTimeOffset>("CreatedDate")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetimeoffset(7)")
+                        .HasDefaultValueSql("(sysdatetimeoffset())");
+
+                    b.Property<string>("Notes")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<string>("SearchField")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("UpdatedBy")
+                        .IsRequired()
+                        .ValueGeneratedOnAdd()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)")
+                        .HasDefaultValueSql("'System'");
+
+                    b.Property<DateTimeOffset>("UpdatedDate")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetimeoffset(7)")
+                        .HasDefaultValueSql("(sysdatetimeoffset())");
+
+                    b.Property<byte[]>("Version")
+                        .IsConcurrencyToken()
+                        .IsRequired()
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("rowversion");
+
+                    b.Property<bool>("Void")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValueSql("(0)");
+
+                    b.Property<string>("VoidBy")
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<DateTimeOffset?>("VoidedDate")
+                        .HasColumnType("datetimeoffset(7)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AbsenceTypeId");
+
+                    b.HasIndex("BusinessId");
+
+                    b.HasIndex("SearchField")
+                        .HasFilter("[SearchField] IS NOT NULL");
+
+                    b.ToTable("BusinessAbsenceTypes");
+                });
 
             modelBuilder.Entity("Sample.DataLayer.Data.Models.Entities.Role", b =>
                 {
@@ -115,81 +498,6 @@ namespace Sample.DataLayer.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Sample.DataLayer.Data.Models.Entities.RoleClaim", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("ClaimType")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ClaimValue")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CreatedBy")
-                        .IsRequired()
-                        .ValueGeneratedOnAdd()
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)")
-                        .HasDefaultValueSql("'System'");
-
-                    b.Property<DateTimeOffset>("CreatedDate")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetimeoffset(0)")
-                        .HasDefaultValueSql("(sysdatetimeoffset())");
-
-                    b.Property<string>("Notes")
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
-
-                    b.Property<long>("RoleId")
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("SearchField")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("UpdatedBy")
-                        .IsRequired()
-                        .ValueGeneratedOnAdd()
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)")
-                        .HasDefaultValueSql("'System'");
-
-                    b.Property<DateTimeOffset>("UpdatedDate")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetimeoffset(0)")
-                        .HasDefaultValueSql("(sysdatetimeoffset())");
-
-                    b.Property<byte[]>("Version")
-                        .IsConcurrencyToken()
-                        .IsRequired()
-                        .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("rowversion");
-
-                    b.Property<bool>("Void")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
-                        .HasDefaultValueSql("(0)");
-
-                    b.Property<string>("VoidBy")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.Property<DateTimeOffset?>("VoidedDate")
-                        .HasColumnType("datetimeoffset(0)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("RoleId");
-
-                    b.HasIndex("SearchField")
-                        .HasFilter("[SearchField] IS NOT NULL");
-
-                    b.ToTable("RoleClaims");
-                });
-
             modelBuilder.Entity("Sample.DataLayer.Data.Models.Entities.User", b =>
                 {
                     b.Property<long>("Id")
@@ -197,12 +505,8 @@ namespace Sample.DataLayer.Migrations
                         .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("AccessFailedCount")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ConcurrencyStamp")
-                        .IsConcurrencyToken()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<long>("BusinessId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("CreatedBy")
                         .IsRequired()
@@ -216,13 +520,13 @@ namespace Sample.DataLayer.Migrations
                         .HasColumnType("datetimeoffset(0)")
                         .HasDefaultValueSql("(sysdatetimeoffset())");
 
+                    b.Property<DateTime?>("DateOfBirth")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
-
-                    b.Property<bool>("EmailConfirmed")
-                        .HasColumnType("bit");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
@@ -234,20 +538,6 @@ namespace Sample.DataLayer.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("varchar(100)");
 
-                    b.Property<bool>("LockoutEnabled")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTimeOffset?>("LockoutEnd")
-                        .HasColumnType("datetimeoffset(7)");
-
-                    b.Property<string>("NormalizedEmail")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.Property<string>("NormalizedUserName")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
                     b.Property<string>("Notes")
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
@@ -256,20 +546,11 @@ namespace Sample.DataLayer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("PhoneNumber")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("PhoneNumberConfirmed")
-                        .HasColumnType("bit");
+                    b.Property<DateTime?>("RegistrationDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("SearchField")
                         .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("SecurityStamp")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("TwoFactorEnabled")
-                        .HasColumnType("bit");
 
                     b.Property<string>("UpdatedBy")
                         .IsRequired()
@@ -308,171 +589,12 @@ namespace Sample.DataLayer.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("NormalizedEmail")
-                        .HasDatabaseName("EmailIndex");
-
-                    b.HasIndex("NormalizedUserName")
-                        .IsUnique()
-                        .HasDatabaseName("UserNameIndex")
-                        .HasFilter("[NormalizedUserName] IS NOT NULL");
+                    b.HasIndex("BusinessId");
 
                     b.HasIndex("SearchField")
                         .HasFilter("[SearchField] IS NOT NULL");
 
                     b.ToTable("Users");
-                });
-
-            modelBuilder.Entity("Sample.DataLayer.Data.Models.Entities.UserClaim", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("ClaimType")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ClaimValue")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CreatedBy")
-                        .IsRequired()
-                        .ValueGeneratedOnAdd()
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)")
-                        .HasDefaultValueSql("'System'");
-
-                    b.Property<DateTimeOffset>("CreatedDate")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetimeoffset(0)")
-                        .HasDefaultValueSql("(sysdatetimeoffset())");
-
-                    b.Property<string>("Notes")
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
-
-                    b.Property<string>("SearchField")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("UpdatedBy")
-                        .IsRequired()
-                        .ValueGeneratedOnAdd()
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)")
-                        .HasDefaultValueSql("'System'");
-
-                    b.Property<DateTimeOffset>("UpdatedDate")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetimeoffset(0)")
-                        .HasDefaultValueSql("(sysdatetimeoffset())");
-
-                    b.Property<long>("UserId")
-                        .HasColumnType("bigint");
-
-                    b.Property<byte[]>("Version")
-                        .IsConcurrencyToken()
-                        .IsRequired()
-                        .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("rowversion");
-
-                    b.Property<bool>("Void")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
-                        .HasDefaultValueSql("(0)");
-
-                    b.Property<string>("VoidBy")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.Property<DateTimeOffset?>("VoidedDate")
-                        .HasColumnType("datetimeoffset(0)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("SearchField")
-                        .HasFilter("[SearchField] IS NOT NULL");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("UserClaims");
-                });
-
-            modelBuilder.Entity("Sample.DataLayer.Data.Models.Entities.UserLogin", b =>
-                {
-                    b.Property<string>("LoginProvider")
-                        .HasMaxLength(450)
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("ProviderKey")
-                        .HasMaxLength(450)
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("CreatedBy")
-                        .IsRequired()
-                        .ValueGeneratedOnAdd()
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)")
-                        .HasDefaultValueSql("'System'");
-
-                    b.Property<DateTimeOffset>("CreatedDate")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetimeoffset(0)")
-                        .HasDefaultValueSql("(sysdatetimeoffset())");
-
-                    b.Property<long>("Id")
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("Notes")
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
-
-                    b.Property<string>("ProviderDisplayName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("SearchField")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("UpdatedBy")
-                        .IsRequired()
-                        .ValueGeneratedOnAdd()
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)")
-                        .HasDefaultValueSql("'System'");
-
-                    b.Property<DateTimeOffset>("UpdatedDate")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetimeoffset(0)")
-                        .HasDefaultValueSql("(sysdatetimeoffset())");
-
-                    b.Property<long>("UserId")
-                        .HasColumnType("bigint");
-
-                    b.Property<byte[]>("Version")
-                        .IsConcurrencyToken()
-                        .IsRequired()
-                        .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("rowversion");
-
-                    b.Property<bool>("Void")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
-                        .HasDefaultValueSql("(0)");
-
-                    b.Property<string>("VoidBy")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.Property<DateTimeOffset?>("VoidedDate")
-                        .HasColumnType("datetimeoffset(0)");
-
-                    b.HasKey("LoginProvider", "ProviderKey");
-
-                    b.HasIndex("SearchField")
-                        .HasFilter("[SearchField] IS NOT NULL");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("UserLogins");
                 });
 
             modelBuilder.Entity("Sample.DataLayer.Data.Models.Entities.UserRole", b =>
@@ -545,108 +667,72 @@ namespace Sample.DataLayer.Migrations
                     b.ToTable("UserRoles");
                 });
 
-            modelBuilder.Entity("Sample.DataLayer.Data.Models.Entities.UserToken", b =>
+            modelBuilder.Entity("Sample.DataLayer.Data.Models.Entities.Absence", b =>
                 {
-                    b.Property<long>("UserId")
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("LoginProvider")
-                        .HasMaxLength(450)
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Name")
-                        .HasMaxLength(450)
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("CreatedBy")
-                        .IsRequired()
-                        .ValueGeneratedOnAdd()
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)")
-                        .HasDefaultValueSql("'System'");
-
-                    b.Property<DateTimeOffset>("CreatedDate")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetimeoffset(0)")
-                        .HasDefaultValueSql("(sysdatetimeoffset())");
-
-                    b.Property<long>("Id")
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("Notes")
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
-
-                    b.Property<string>("SearchField")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("UpdatedBy")
-                        .IsRequired()
-                        .ValueGeneratedOnAdd()
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)")
-                        .HasDefaultValueSql("'System'");
-
-                    b.Property<DateTimeOffset>("UpdatedDate")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetimeoffset(0)")
-                        .HasDefaultValueSql("(sysdatetimeoffset())");
-
-                    b.Property<string>("Value")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<byte[]>("Version")
-                        .IsConcurrencyToken()
-                        .IsRequired()
-                        .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("rowversion");
-
-                    b.Property<bool>("Void")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
-                        .HasDefaultValueSql("(0)");
-
-                    b.Property<string>("VoidBy")
-                        .IsRequired()
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.Property<DateTimeOffset?>("VoidedDate")
-                        .HasColumnType("datetimeoffset(0)");
-
-                    b.HasKey("UserId", "LoginProvider", "Name");
-
-                    b.HasIndex("SearchField")
-                        .HasFilter("[SearchField] IS NOT NULL");
-
-                    b.ToTable("UserTokens");
-                });
-
-            modelBuilder.Entity("Sample.DataLayer.Data.Models.Entities.RoleClaim", b =>
-                {
-                    b.HasOne("Sample.DataLayer.Data.Models.Entities.Role", null)
-                        .WithMany()
-                        .HasForeignKey("RoleId")
+                    b.HasOne("Sample.DataLayer.Data.Models.Entities.BusinessAbsenceType", "BusinessAbsenceType")
+                        .WithMany("AbsenceBusinessAbsenceType")
+                        .HasForeignKey("BusinessAbsenceTypeId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
-                });
 
-            modelBuilder.Entity("Sample.DataLayer.Data.Models.Entities.UserClaim", b =>
-                {
-                    b.HasOne("Sample.DataLayer.Data.Models.Entities.User", null)
-                        .WithMany()
+                    b.HasOne("Sample.DataLayer.Data.Models.Entities.User", "User")
+                        .WithMany("AbsenceUser")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+
+                    b.Navigation("BusinessAbsenceType");
+
+                    b.Navigation("User");
                 });
 
-            modelBuilder.Entity("Sample.DataLayer.Data.Models.Entities.UserLogin", b =>
+            modelBuilder.Entity("Sample.DataLayer.Data.Models.Entities.AbsenceApproval", b =>
                 {
-                    b.HasOne("Sample.DataLayer.Data.Models.Entities.User", null)
-                        .WithMany()
-                        .HasForeignKey("UserId")
+                    b.HasOne("Sample.DataLayer.Data.Models.Entities.Absence", "Absence")
+                        .WithMany("AbsenceApprovalAbsence")
+                        .HasForeignKey("AbsenceId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+
+                    b.HasOne("Sample.DataLayer.Data.Models.Entities.User", "User")
+                        .WithMany("AbsenceApprovalUser")
+                        .HasForeignKey("ManagerId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Absence");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Sample.DataLayer.Data.Models.Entities.BusinessAbsenceType", b =>
+                {
+                    b.HasOne("Sample.DataLayer.Data.Models.Entities.AbsenceType", "AbsenceType")
+                        .WithMany("BusinessAbsenceTypeAbsenceType")
+                        .HasForeignKey("AbsenceTypeId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Sample.DataLayer.Data.Models.Entities.Business", "Business")
+                        .WithMany("BusinessAbsenceTypeBusiness")
+                        .HasForeignKey("BusinessId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("AbsenceType");
+
+                    b.Navigation("Business");
+                });
+
+            modelBuilder.Entity("Sample.DataLayer.Data.Models.Entities.User", b =>
+                {
+                    b.HasOne("Sample.DataLayer.Data.Models.Entities.Business", "Business")
+                        .WithMany("UserBusiness")
+                        .HasForeignKey("BusinessId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Business");
                 });
 
             modelBuilder.Entity("Sample.DataLayer.Data.Models.Entities.UserRole", b =>
@@ -664,13 +750,33 @@ namespace Sample.DataLayer.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Sample.DataLayer.Data.Models.Entities.UserToken", b =>
+            modelBuilder.Entity("Sample.DataLayer.Data.Models.Entities.Absence", b =>
                 {
-                    b.HasOne("Sample.DataLayer.Data.Models.Entities.User", null)
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                    b.Navigation("AbsenceApprovalAbsence");
+                });
+
+            modelBuilder.Entity("Sample.DataLayer.Data.Models.Entities.AbsenceType", b =>
+                {
+                    b.Navigation("BusinessAbsenceTypeAbsenceType");
+                });
+
+            modelBuilder.Entity("Sample.DataLayer.Data.Models.Entities.Business", b =>
+                {
+                    b.Navigation("BusinessAbsenceTypeBusiness");
+
+                    b.Navigation("UserBusiness");
+                });
+
+            modelBuilder.Entity("Sample.DataLayer.Data.Models.Entities.BusinessAbsenceType", b =>
+                {
+                    b.Navigation("AbsenceBusinessAbsenceType");
+                });
+
+            modelBuilder.Entity("Sample.DataLayer.Data.Models.Entities.User", b =>
+                {
+                    b.Navigation("AbsenceApprovalUser");
+
+                    b.Navigation("AbsenceUser");
                 });
 #pragma warning restore 612, 618
         }
