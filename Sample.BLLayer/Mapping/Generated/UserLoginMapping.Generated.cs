@@ -9,9 +9,9 @@ namespace Sample.BLLayer.Mapping
  
     public partial class UserLoginMapping : EntityMapping<UserLogin, UserLoginDTO, long>, IUserLoginMapping
     {
-        public override UserLogin MapEntity(UserLogin  entity, 
-                                       UserLoginDTO entityDTO,
-                                       bool isNewEntity)
+        public override UserLogin MapEntity(UserLogin entity, 
+                                                    UserLoginDTO entityDTO,
+                                                    bool isNewEntity)
         {
             UserLoginMapEntity(entity, entityDTO, isNewEntity);
             MapSearchField(entityDTO);

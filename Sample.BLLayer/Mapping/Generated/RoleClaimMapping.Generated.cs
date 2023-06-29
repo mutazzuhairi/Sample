@@ -9,9 +9,9 @@ namespace Sample.BLLayer.Mapping
  
     public partial class RoleClaimMapping : EntityMapping<RoleClaim, RoleClaimDTO, int>, IRoleClaimMapping
     {
-        public override RoleClaim MapEntity(RoleClaim  entity, 
-                                       RoleClaimDTO entityDTO,
-                                       bool isNewEntity)
+        public override RoleClaim MapEntity(RoleClaim entity, 
+                                                    RoleClaimDTO entityDTO,
+                                                    bool isNewEntity)
         {
             RoleClaimMapEntity(entity, entityDTO, isNewEntity);
             MapSearchField(entityDTO);

@@ -9,9 +9,9 @@ namespace Sample.BLLayer.Mapping
  
     public partial class UserClaimMapping : EntityMapping<UserClaim, UserClaimDTO, int>, IUserClaimMapping
     {
-        public override UserClaim MapEntity(UserClaim  entity, 
-                                       UserClaimDTO entityDTO,
-                                       bool isNewEntity)
+        public override UserClaim MapEntity(UserClaim entity, 
+                                                    UserClaimDTO entityDTO,
+                                                    bool isNewEntity)
         {
             UserClaimMapEntity(entity, entityDTO, isNewEntity);
             MapSearchField(entityDTO);

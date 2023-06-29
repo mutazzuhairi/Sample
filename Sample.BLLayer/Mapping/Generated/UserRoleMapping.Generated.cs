@@ -9,9 +9,9 @@ namespace Sample.BLLayer.Mapping
  
     public partial class UserRoleMapping : EntityMapping<UserRole, UserRoleDTO, long>, IUserRoleMapping
     {
-        public override UserRole MapEntity(UserRole  entity, 
-                                       UserRoleDTO entityDTO,
-                                       bool isNewEntity)
+        public override UserRole MapEntity(UserRole entity, 
+                                                    UserRoleDTO entityDTO,
+                                                    bool isNewEntity)
         {
             UserRoleMapEntity(entity, entityDTO, isNewEntity);
             MapSearchField(entityDTO);
