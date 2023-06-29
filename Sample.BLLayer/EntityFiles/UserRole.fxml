@@ -6,6 +6,7 @@
   BaseIdType="&quot;Long&quot;"
   BaseType="&quot;IBaseEntity&quot;"
   IsBaseIdPrimaryKey="true"
+  OldTableName="&quot;UserRole&quot;"
   InActive="false"
   NoObjectTable="false"
   NoViewController="false"

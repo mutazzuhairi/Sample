@@ -6,6 +6,7 @@
   BaseIdType="&quot;Integer&quot;"
   BaseType="&quot;IBaseEntity&quot;"
   IsBaseIdPrimaryKey="true"
+  OldTableName="&quot;RoleClaim&quot;"
   InActive="false"
   NoObjectTable="false"
   NoViewController="false"
