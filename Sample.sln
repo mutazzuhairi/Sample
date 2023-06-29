@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31005.135
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33815.320
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample.Web", "Sample.Web\Sample.Web.csproj", "{FF76C067-B5A9-43B2-B918-A180EA564415}"
 EndProject
@@ -28,7 +28,6 @@ Global
 		{49742247-D0A6-4293-9FC9-41D6F5EE5086}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{49742247-D0A6-4293-9FC9-41D6F5EE5086}.Release|Any CPU.Build.0 = Release|Any CPU
 		{764CCB8D-21B6-4517-B0AD-44C2AF48BA8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{764CCB8D-21B6-4517-B0AD-44C2AF48BA8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{764CCB8D-21B6-4517-B0AD-44C2AF48BA8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{764CCB8D-21B6-4517-B0AD-44C2AF48BA8C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{38FB4D6D-7F26-4C99-BFBF-B793D3468D5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -36,7 +35,6 @@ Global
 		{38FB4D6D-7F26-4C99-BFBF-B793D3468D5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{38FB4D6D-7F26-4C99-BFBF-B793D3468D5D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3B4C705D-13D6-4B83-8B7F-D155F1650300}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3B4C705D-13D6-4B83-8B7F-D155F1650300}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3B4C705D-13D6-4B83-8B7F-D155F1650300}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3B4C705D-13D6-4B83-8B7F-D155F1650300}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
