@@ -32,13 +32,13 @@ namespace <#= NameSpace #>
         private readonly Lazy<ICacheProvider> _cacheProvider;
 
         public <#= Table.Name #>UpdateService(Lazy<I<#= Table.Name #>Repositry> entityRepositry,
-                                    Lazy<I<#= Table.Name #>Validating> entityValidating,
-                                    Lazy<I<#= Table.Name #>Mapping> entityMapping,
-                                    Lazy<<#= Table.ServiceBuildException.Name #>> serviceBuildException,
-                                    Lazy<<#= Table.SystemServiceProvider.Name #>> systemServiceProvider,
-                                    Lazy<<#= Table.CommonServices.Name #>> commonServices,
-                                    <#= Table.Mapper.Name #> mapper,
-                                    Lazy<<#= Table.ICacheProvider.Name #>> cacheProvider) :
+                                 Lazy<I<#= Table.Name #>Validating> entityValidating,
+                                 Lazy<I<#= Table.Name #>Mapping> entityMapping,
+                                 Lazy<<#= Table.ServiceBuildException.Name #>> serviceBuildException,
+                                 Lazy<<#= Table.SystemServiceProvider.Name #>> systemServiceProvider,
+                                 Lazy<<#= Table.CommonServices.Name #>> commonServices,
+                                 <#= Table.Mapper.Name #> mapper,
+                                 Lazy<<#= Table.ICacheProvider.Name #>> cacheProvider) :
             base(entityRepositry, entityValidating, entityMapping, serviceBuildException, systemServiceProvider, commonServices, mapper, cacheProvider)
         {
             _entityRepositry = entityRepositry;

@@ -185,7 +185,7 @@ namespace ");
             #line hidden
             
             #line 25 "GeneratedStructure\T4GeneratedTemplates\EntitiesControllerDTOTemplate.tt"
-            this.Write("QueryService> entityQueryService,\r\n                                     Lazy<I");
+            this.Write("QueryService> entityQueryService,\r\n                              Lazy<I");
             
             #line default
             #line hidden
@@ -197,7 +197,7 @@ namespace ");
             #line hidden
             
             #line 26 "GeneratedStructure\T4GeneratedTemplates\EntitiesControllerDTOTemplate.tt"
-            this.Write("UpdateService> entityUpdateService,\r\n                                     Lazy<");
+            this.Write("UpdateService> entityUpdateService,\r\n                              Lazy<");
             
             #line default
             #line hidden
@@ -209,7 +209,7 @@ namespace ");
             #line hidden
             
             #line 27 "GeneratedStructure\T4GeneratedTemplates\EntitiesControllerDTOTemplate.tt"
-            this.Write("> systemServiceProvider,\r\n                                     Lazy<");
+            this.Write("> systemServiceProvider,\r\n                              Lazy<");
             
             #line default
             #line hidden

@@ -23,9 +23,9 @@ namespace <#= NameSpace #>
         private readonly Lazy<<#= Table.ApiExceptionBuilder.Name #>> _apiExceptionBuilder;
 
         public <#= Table.Name #>Controller(Lazy<I<#= Table.Name #>QueryService> entityQueryService,
-                                     Lazy<I<#= Table.Name #>UpdateService> entityUpdateService,
-                                     Lazy<<#= Table.SystemServiceProvider.Name #>> systemServiceProvider,
-                                     Lazy<<#= Table.ApiExceptionBuilder.Name #>> apiExceptionBuilder) :
+                              Lazy<I<#= Table.Name #>UpdateService> entityUpdateService,
+                              Lazy<<#= Table.SystemServiceProvider.Name #>> systemServiceProvider,
+                              Lazy<<#= Table.ApiExceptionBuilder.Name #>> apiExceptionBuilder) :
             base(entityQueryService, entityUpdateService, systemServiceProvider, apiExceptionBuilder)
         {
 

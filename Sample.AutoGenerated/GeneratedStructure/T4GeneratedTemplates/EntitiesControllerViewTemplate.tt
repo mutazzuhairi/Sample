@@ -13,14 +13,14 @@ using Sample.DataLayer.DataUtilities.HelperServices.Interfaces;
 namespace <#= NameSpace #>
 {
  
-    public class <#= Table.Name #>ViewController : CustomBaseViewController<<#= Table.Name #>DTO, <#= Table.Name #>View, I<#= Table.Name #>QueryService>
+    public class <#= Table.Name #>ViewController : CustomBaseViewController<<#= Table.Name #>DTO, <#= Table.Name #>View, I<#= Table.Name #>QueryService, <#= Table.IdType #>>
     {
 
         private readonly Lazy<I<#= Table.Name #>QueryService> _entityQueryService;    
         private readonly Lazy<<#= Table.SystemServiceProvider.Name #>> _systemServiceProvider;
 
         public <#= Table.Name #>ViewController(Lazy<I<#= Table.Name #>QueryService> entityQueryService,                                      
-                                               Lazy<<#= Table.SystemServiceProvider.Name #>> systemServiceProvider) :
+                                  Lazy<<#= Table.SystemServiceProvider.Name #>> systemServiceProvider) :
             base(entityQueryService, systemServiceProvider)
         {
         

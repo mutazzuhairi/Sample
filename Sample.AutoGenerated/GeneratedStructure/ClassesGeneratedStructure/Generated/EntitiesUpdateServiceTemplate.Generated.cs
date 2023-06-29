@@ -250,7 +250,7 @@ namespace ");
             #line hidden
             
             #line 34 "GeneratedStructure\T4GeneratedTemplates\EntitiesUpdateServiceTemplate.tt"
-            this.Write("Repositry> entityRepositry,\r\n                                    Lazy<I");
+            this.Write("Repositry> entityRepositry,\r\n                                 Lazy<I");
             
             #line default
             #line hidden
@@ -262,7 +262,7 @@ namespace ");
             #line hidden
             
             #line 35 "GeneratedStructure\T4GeneratedTemplates\EntitiesUpdateServiceTemplate.tt"
-            this.Write("Validating> entityValidating,\r\n                                    Lazy<I");
+            this.Write("Validating> entityValidating,\r\n                                 Lazy<I");
             
             #line default
             #line hidden
@@ -274,7 +274,7 @@ namespace ");
             #line hidden
             
             #line 36 "GeneratedStructure\T4GeneratedTemplates\EntitiesUpdateServiceTemplate.tt"
-            this.Write("Mapping> entityMapping,\r\n                                    Lazy<");
+            this.Write("Mapping> entityMapping,\r\n                                 Lazy<");
             
             #line default
             #line hidden
@@ -286,7 +286,7 @@ namespace ");
             #line hidden
             
             #line 37 "GeneratedStructure\T4GeneratedTemplates\EntitiesUpdateServiceTemplate.tt"
-            this.Write("> serviceBuildException,\r\n                                    Lazy<");
+            this.Write("> serviceBuildException,\r\n                                 Lazy<");
             
             #line default
             #line hidden
@@ -298,7 +298,7 @@ namespace ");
             #line hidden
             
             #line 38 "GeneratedStructure\T4GeneratedTemplates\EntitiesUpdateServiceTemplate.tt"
-            this.Write("> systemServiceProvider,\r\n                                    Lazy<");
+            this.Write("> systemServiceProvider,\r\n                                 Lazy<");
             
             #line default
             #line hidden
@@ -310,7 +310,7 @@ namespace ");
             #line hidden
             
             #line 39 "GeneratedStructure\T4GeneratedTemplates\EntitiesUpdateServiceTemplate.tt"
-            this.Write("> commonServices,\r\n                                    ");
+            this.Write("> commonServices,\r\n                                 ");
             
             #line default
             #line hidden
@@ -322,7 +322,7 @@ namespace ");
             #line hidden
             
             #line 40 "GeneratedStructure\T4GeneratedTemplates\EntitiesUpdateServiceTemplate.tt"
-            this.Write(" mapper,\r\n                                    Lazy<");
+            this.Write(" mapper,\r\n                                 Lazy<");
             
             #line default
             #line hidden

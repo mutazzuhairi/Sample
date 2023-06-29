@@ -14,9 +14,9 @@ namespace <#= NameSpace #>
  
     public partial class <#= Table.Name #>Mapping : EntityMapping<<#= Table.Name #>, <#= Table.Name #>DTO, <#= Table.IdType #>>, I<#= Table.Name #>Mapping
     {
-        public override <#= Table.Name #> MapEntity(<#= Table.Name #>  entity, 
-                                       <#= Table.Name #>DTO entityDTO,
-                                       bool isNewEntity)
+        public override <#= Table.Name #> MapEntity(<#= Table.Name #> entity, 
+                                  <#= Table.Name #>DTO entityDTO,
+                                  bool isNewEntity)
         {
             <#= Table.Name #>MapEntity(entity, entityDTO, isNewEntity);
             MapSearchField(entityDTO);

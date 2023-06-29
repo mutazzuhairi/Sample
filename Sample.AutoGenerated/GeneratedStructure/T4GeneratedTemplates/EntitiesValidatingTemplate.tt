@@ -20,8 +20,8 @@ namespace <#= NameSpace #>
         private readonly Lazy<<#= Table.ServiceBuildException.Name #>> _serviceBuildException;
 
         public <#= Table.Name #>Validating(Lazy<I<#= Table.Name #>QueryService> entityQueryService,
-                                      Lazy<<#= Table.CommonServices.Name #>> commonServices,
-                                      Lazy<<#= Table.ServiceBuildException.Name #>> serviceBuildException)
+                              Lazy<<#= Table.CommonServices.Name #>> commonServices,
+                              Lazy<<#= Table.ServiceBuildException.Name #>> serviceBuildException)
         {
 
             _entityQueryService = entityQueryService;

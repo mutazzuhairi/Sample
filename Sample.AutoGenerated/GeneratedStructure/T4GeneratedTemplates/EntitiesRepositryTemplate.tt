@@ -20,8 +20,8 @@ namespace <#= NameSpace #>
         private readonly Lazy<<#= Table.SystemServiceProvider.Name #>> _systemServiceProvider;
 
         public <#= Table.Name #>Repositry(<#= Table.Context.Name #> context, 
-                                          Lazy<<#= Table.SystemServiceProvider.Name #>> systemServiceProvider) : 
-                                          base(context, systemServiceProvider)
+                             Lazy<<#= Table.SystemServiceProvider.Name #>> systemServiceProvider) : 
+            base(context, systemServiceProvider)
         {
             _context = context;
             _systemServiceProvider = systemServiceProvider;

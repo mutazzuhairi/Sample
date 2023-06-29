@@ -123,7 +123,7 @@ namespace ");
             #line hidden
             
             #line 22 "GeneratedStructure\T4GeneratedTemplates\EntitiesRepositryTemplate.tt"
-            this.Write(" context, \r\n                                          Lazy<");
+            this.Write(" context, \r\n                             Lazy<");
             
             #line default
             #line hidden
@@ -135,10 +135,9 @@ namespace ");
             #line hidden
             
             #line 23 "GeneratedStructure\T4GeneratedTemplates\EntitiesRepositryTemplate.tt"
-            this.Write("> systemServiceProvider) : \r\n                                          base(conte" +
-                    "xt, systemServiceProvider)\r\n        {\r\n            _context = context;\r\n        " +
-                    "    _systemServiceProvider = systemServiceProvider;\r\n        }\r\n \r\n    }\r\n\r\n}\r\n\r" +
-                    "\n\r\n");
+            this.Write("> systemServiceProvider) : \r\n            base(context, systemServiceProvider)\r\n  " +
+                    "      {\r\n            _context = context;\r\n            _systemServiceProvider = s" +
+                    "ystemServiceProvider;\r\n        }\r\n \r\n    }\r\n\r\n}\r\n\r\n\r\n");
             
             #line default
             #line hidden
