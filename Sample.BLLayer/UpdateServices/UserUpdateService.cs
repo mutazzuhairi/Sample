@@ -11,7 +11,6 @@ using Sample.BLLayer.BLUtilities.HelperServices.Interfaces;
 using System;
 using Sample.DataLayer.DataUtilities.HelperServices.Interfaces;
 using Sample.BLLayer.Extends.ExtendServices.Interfaces;
-using Sample.BLLayer.Extends.ExtendServices.Interfaces;
 
 namespace Sample.BLLayer.UpdateServices
 {

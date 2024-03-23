@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
-using NLog;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -72,31 +71,37 @@ namespace Sample.Web.WebUtilities.Middlewares
             {
                 sw.Stop();
                 double elapsed = sw.Elapsed.TotalMilliseconds;
-                MappedDiagnosticsLogicalContext.Set("userIdentityId", httpContext.User.FindFirstValue(ClaimTypes.NameIdentifier) ?? "N/A");
-                MappedDiagnosticsLogicalContext.Set("userIdentityUsername", httpContext.User.FindFirstValue(ClaimTypes.Name) ?? "N/A");
-                MappedDiagnosticsLogicalContext.Set("responseStatusCode", httpContext.Response.StatusCode.ToString() ?? "N/A");
-
-                var message = JsonConvert.SerializeObject(new {
-                    ExecutionTime = elapsed,
-                    RequestBody = body,
-                    Details = dictionary
-                });
-                
-                switch (httpContext.Response.StatusCode)
+                using (logger.BeginScope(new Dictionary<string, object>
                 {
-                    case (int)HttpStatusCode.BadRequest:
-                    case (int)HttpStatusCode.Forbidden:
-                        logger.LogWarning(message);
-                        break;
-                    case (int)HttpStatusCode.Unauthorized:
-                        logger.LogWarning(message);
-                        break;
-                    case (int)HttpStatusCode.InternalServerError:
-                        logger.LogError(message);
-                        break;
-                    default:
-                        logger.LogInformation(message);
-                        break;
+                    ["userIdentityId"] = httpContext.User.FindFirstValue(ClaimTypes.NameIdentifier) ?? "N/A",
+                    ["userIdentityUsername"] = httpContext.User.FindFirstValue(ClaimTypes.Name) ?? "N/A",
+                    ["responseStatusCode"] = httpContext.Response.StatusCode.ToString() ?? "N/A"
+                }))
+                {
+                    var message = JsonConvert.SerializeObject(new
+                    {
+                        ExecutionTime = elapsed,
+                        RequestBody = body,
+                        Details = dictionary
+                    });
+
+                    switch (httpContext.Response.StatusCode)
+                    {
+                        case (int)HttpStatusCode.BadRequest:
+                        case (int)HttpStatusCode.Forbidden:
+                            logger.LogWarning(message);
+                            break;
+                        case (int)HttpStatusCode.Unauthorized:
+                            logger.LogWarning(message);
+                            break;
+                        case (int)HttpStatusCode.InternalServerError:
+                            logger.LogError(message);
+                            break;
+                        default:
+                            logger.LogInformation(message);
+                            break;
+                    }
+
                 }
             }
         }
