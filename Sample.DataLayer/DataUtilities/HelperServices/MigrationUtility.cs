@@ -17,7 +17,7 @@ namespace Sample.DataLayer.DataUtilities.HelperServices
                 var resourceName = Path.Combine(AppContext.BaseDirectory, $"SQL\\{sqlFileName}");
                 return File.ReadAllText(resourceName);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 throw new FileNotFoundException("Unable to find the SQL file from an embedded resource", sqlFileName);
             }
