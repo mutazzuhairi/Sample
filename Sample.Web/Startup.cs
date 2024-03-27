@@ -34,7 +34,7 @@ namespace Sample.Web
             services.AddDefaultIdentityOptions(Configuration);
             services.SetJwtSettingsConfigure(Configuration);
             services.AddSwagger(Configuration);
-            //services.AddHangfire(Configuration);
+            services.AddHangfire(Configuration);
             services.AddBasicServicesToConfigure();
             services.AddEntityServicesToConfigure();
             services.AddDataServicesToConfigure();
@@ -58,8 +58,8 @@ namespace Sample.Web
             }
             app.UseSwaggerInterface();
             app.UseCors();
-            //app.UseHangfireInterface(Configuration);
-            //recurringJob.AddScheduleRecurringJobS();
+            app.UseHangfireInterface(Configuration);
+            recurringJob.AddScheduleRecurringJobS();
             app.UseErrorHandlingMiddleware();
             app.UseAuthentication();
             app.UseAuthorization();

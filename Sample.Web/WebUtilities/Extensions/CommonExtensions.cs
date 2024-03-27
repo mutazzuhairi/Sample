@@ -97,7 +97,7 @@ namespace Sample.Web.WebUtilities.Extensions
                                       new BasicAuthAuthorizationUser
                                       {
                                           Login = "Sample",
-                                          Password = new byte[] { 0x45,0x49,0x82,0xa2,0xfd,0xf6,0x86,0xa5,0x4d,0xe2,0xb2,0xf7,0x0a,0x05,0x6b,0x29,0xf4,0xfb,0x52,0xd4 }
+                                          PasswordClear = "Sample"
                                       }
                                   }
                               })
